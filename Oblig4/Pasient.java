@@ -1,9 +1,12 @@
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Pasient {
   private String navn;
   private long fodselsNr;
   private String adresse;
   private int postnummer;
 //  private Stabel<Resept> resepter;
+  static AtomicInteger nesteId = new AtomicInteger();
   private int id;
 
   public Pasient(String navn, long fodselsNr, String adresse, int postnummer) {
@@ -11,6 +14,7 @@ public class Pasient {
     this.fodselsNr = fodselsNr;
     this.adresse = adresse;
     this.postnummer = postnummer;
+    id = nesteId.incrementAndGet();
   //  resepter = new Stabel<Resept>();
   }
 
