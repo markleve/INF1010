@@ -32,6 +32,7 @@ public class Pasient {
     hentReseptliste().settInn(resept);
   }
 
+  @Override
   public String toString() {
     return "[" + hentId() + "] " + hentNavn() + " (" + hentFodselsnummer() + ")";
   }
