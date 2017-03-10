@@ -7,16 +7,17 @@ public class TestLege {
 
     Resept r1 = new Resept("første", 2);
     Resept r2 = new Resept("andre", 3);
-    pasient.leggTilResept(r1);
-    pasient.leggTilResept(r2);
+    lege.leggTilResept(r1);
+    lege.leggTilResept(r2);
     System.out.println("\nReseptliste");
-    for (Resept rep: pasient.hentReseptliste()) {
+    for (Resept rep: lege.hentReseptliste()) {
       System.out.println(rep);
     }
 
-    Pasient pasient2 = new Pasient("Marie Klever", 123445697, "Moerveien 36a", 1430);
-    System.out.println(pasient2);
-    Pasient pasient3 = new Pasient("Marie Klever", 123445697, "Moerveien 36a", 1430);
-    System.out.println(pasient3);
+    Lege lege2 = new Lege("Dr. Herre");
+    System.out.println(lege2);
+
+    Lege lege3 = new Lege("Dr. Lala");
+    System.out.println(lege3);
   }
 }
