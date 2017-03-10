@@ -16,4 +16,8 @@ public class Lege implements Comparable<Lege> {
   public int compareTo(Lege annenLege) {
     return 1;
   }
+
+  public String toString() {
+    return "Doktoren: " + hentNavn();
+  }
 }
