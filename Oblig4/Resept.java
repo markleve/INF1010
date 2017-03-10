@@ -10,4 +10,9 @@ public class Resept {
     this.mengde = mengde;
   }
 
+  @Override
+  public String toString() {
+    return "Typ: " + type + "\n Mengde:" + mangde;
+  }
+
 }
