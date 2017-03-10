@@ -18,6 +18,6 @@ public class Lege implements Comparable<Lege> {
   }
 
   public String toString() {
-    return "Doktoren: " + hentNavn();
+    return "\nDoktoren: " + hentNavn();
   }
 }
