@@ -5,7 +5,7 @@ public class Pasient {
   private long fodselsNr;
   private String adresse;
   private int postnummer;
-//  private Stabel<Resept> resepter;
+  private Stabel<Resept> reseptliste;
   private static AtomicInteger nesteId = new AtomicInteger();
   private static int id;    // skal dene gjores finale?? Slik at den ikke kan endre?
 
@@ -15,7 +15,7 @@ public class Pasient {
     this.adresse = adresse;
     this.postnummer = postnummer;
     id = nesteId.incrementAndGet();
-  //  resepter = new Stabel<Resept>();
+    reseptliste = new Stabel<Resept>();
   }
 
   // hvordan skal man skrive javadoc til get metoder ??
@@ -24,4 +24,6 @@ public class Pasient {
   public long hentFodselsnummer() { return fodselsNr; }
   public String hentGateadresse() { return adresse; }
   public int hentPostnummer() { return postnummer; }
+  public Stabel<Resept> hentReseptliste() { return reseptliste; }
+
 }
