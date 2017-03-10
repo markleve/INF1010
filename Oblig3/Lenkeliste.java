@@ -13,9 +13,9 @@ abstract class Lenkeliste<T> implements Liste<T> {
   */
   public Lenkeliste() {
     hode = new Node(null);
-    hale = new Node(null);
-    hode.neste = hale;
-    hale.forrige = hode;
+    hode.neste = hode;
+    hode.forrige = hode;
+    hale = hode;
   }
 
   /**
