@@ -34,6 +34,8 @@ public class Pasient {
 
   @Override
   public String toString() {
-    return "[" + hentId() + "] " + hentNavn() + " (" + hentFodselsnummer() + ")";
+    return "\nPassient " + "[" + hentId() + "]: " + hentNavn() + " (" +
+    hentFodselsnummer() + ")\n" + "Adresse: " + hentGateadresse() +
+    "\nPostnummer: " + hentPostnummer();
   }
 }
