@@ -3,7 +3,7 @@ public class Pasient {
   private long fodselsNr;
   private String adresse;
   private int postnummer;
-  private Stabel<Resept> resepter;
+//  private Stabel<Resept> resepter;
   private int id;
 
   public Pasient(String navn, long fodselsNr, String adresse, int postnummer) {
@@ -11,22 +11,13 @@ public class Pasient {
     this.fodselsNr = fodselsNr;
     this.adresse = adresse;
     this.postnummer = postnummer;
-    resepter = new Stabel<Resept>();
+  //  resepter = new Stabel<Resept>();
   }
 
-  public in hentId() {
-    return id;
-  }
-
-  public long hentFodselsnummer() {
-    return fodselsNr;
-  }
-
-  public String hentGateadresse() {
-    return adresse;
-  }
-
-  public int hentPostnummer() {
-    return postnummer;
-  }
+  // hvordan skal man skrive javadoc til get metoder ??
+  public int hentId() { return id; }
+  public String hentNavn() { return navn; }
+  public long hentFodselsnummer() { return fodselsNr; }
+  public String hentGateadresse() { return adresse; }
+  public int hentPostnummer() { return postnummer; }
 }
