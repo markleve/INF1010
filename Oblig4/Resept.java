@@ -12,7 +12,7 @@ public class Resept {
 
   @Override
   public String toString() {
-    return "Typ: " + type + "\n Mengde:" + mangde;
+    return "Typ: " + type + "\nMengde:" + mengde;
   }
 
 }
