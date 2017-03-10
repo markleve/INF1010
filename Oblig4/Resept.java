@@ -2,10 +2,12 @@
 // kan endre denne til abstact naar jeg har laget de to typene
 // resepter som det skal vaere
 public class Resept {
-  private int antall;
+  private String type;
+  private int mengde;
 
-  public Resept() {
-    antall = 0;
+  public Resept(String type, int mengde) {
+    this.type = type;
+    this.mengde = mengde;
   }
 
 }
