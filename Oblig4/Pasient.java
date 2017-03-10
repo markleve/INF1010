@@ -26,4 +26,9 @@ public class Pasient {
   public int hentPostnummer() { return postnummer; }
   public Stabel<Resept> hentReseptliste() { return reseptliste; }
 
+  // skal man kalle paa metoden for aa faa reseptlisten, eller kan
+  // man bare bruke variablenavnet: reseptliste
+  public void leggTilResept(Resept resept) {
+    hentReseptliste().settInn(resept);
+  }
 }
