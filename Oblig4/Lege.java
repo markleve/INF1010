@@ -17,6 +17,7 @@ public class Lege implements Comparable<Lege> {
     return 1;
   }
 
+  @Override
   public String toString() {
     return "\nDoktoren: " + hentNavn();
   }
