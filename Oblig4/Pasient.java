@@ -31,4 +31,8 @@ public class Pasient {
   public void leggTilResept(Resept resept) {
     hentReseptliste().settInn(resept);
   }
+
+  public String toString() {
+    return "[" + hentId() + "] " + hentNavn() + " (" + hentFodselsnummer() + ")";
+  }
 }
