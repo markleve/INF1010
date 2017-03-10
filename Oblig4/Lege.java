@@ -9,6 +9,9 @@ public class Lege implements Comparable<Lege> {
 
   public String hentNavn() { return navn; }
   public Koe<Resept> hentReseptliste() {return reseptliste; }
+  public void leggTilResept(Resept resept) {
+    hentReseptliste().settInn(resept);
+  }
 
   public int compareTo(Lege annenLege) {
     return 1;
