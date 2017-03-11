@@ -14,7 +14,7 @@ public class Pasient {
     this.fodselsNr = fodselsNr;
     this.adresse = adresse;
     this.postnummer = postnummer;
-    id = nesteId.incrementAndGet();
+    id = nesteId.getAndIncrement();
     reseptliste = new Stabel<Resept>();
   }
 
