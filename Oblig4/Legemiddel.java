@@ -1,6 +1,6 @@
 import java.util.concurrent.atomic.AtomicInteger;
 
-abstract class Legemiddel {
+public abstract class Legemiddel {
 
   // skal variablene vaere protected eller private?
   // trenger subklassene tilgang til variablene?
