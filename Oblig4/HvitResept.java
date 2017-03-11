@@ -11,6 +11,6 @@ public class HvitResept extends Resept {
 
   @Override
   public String toString() {
-    return "Blå resept " + super.toString();
+    return "Hvit resept " + super.toString();
   }
 }
