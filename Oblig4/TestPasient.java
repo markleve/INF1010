@@ -4,7 +4,7 @@ public class TestPasient {
     Pasient pasient = new Pasient("Marie Klever", 123445697, "Moerveien 36a", 1430);
     System.out.println(pasient);
 
-
+/*
     Resept r1 = new Resept("første", 2);
     Resept r2 = new Resept("andre", 3);
     pasient.leggTilResept(r1);
@@ -17,6 +17,6 @@ public class TestPasient {
     Pasient pasient2 = new Pasient("Marie Klever", 123445697, "Moerveien 36a", 1430);
     System.out.println(pasient2);
     Pasient pasient3 = new Pasient("Marie Klever", 123445697, "Moerveien 36a", 1430);
-    System.out.println(pasient3);
+    System.out.println(pasient3);*/
   }
 }
