@@ -23,6 +23,7 @@ abstract class Legemiddel {
   public double hentPris() { return pris; }
   public double hentVirkestoff() { return virkestoff; }
 
+  // overskriver denne en annen toString metode??
   public String toString() {
     return "legemiddel [" + hentId() + "] " + hentNavn() + "\nPris: "
     + hentPris() + "\nVirkestoff: " + hentVirkestoff();

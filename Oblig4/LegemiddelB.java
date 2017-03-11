@@ -10,6 +10,7 @@ public class LegemiddelB extends Legemiddel {
 
   public int hentVanedannendeStyrke() {return styrke; }
 
+  @Override
   public String toString() {
     return "Vanedannende " + super.toString() + "\nVanedannende styrke: "
     + hentVanedannendeStyrke();

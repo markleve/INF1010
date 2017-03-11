@@ -5,6 +5,7 @@ public class LegemiddelC extends Legemiddel {
     super(navn, pris, virkestoff);
   }
 
+  @Override
   public String toString() {
     return "Vanlig " + super.toString();
   }

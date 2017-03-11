@@ -10,6 +10,7 @@ public class LegemiddelA extends Legemiddel {
 
   public int hentNarkotiskStyrke() { return styrke;}
 
+  @Override
   public String toString() {
     return "Narkotisk " + super.toString() + "\nNarkotisk styrke: "
     + hentNarkotiskStyrke();
