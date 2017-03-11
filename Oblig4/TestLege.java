@@ -31,6 +31,7 @@ public class TestLege {
   //  System.out.println(fastlege);
   //  System.out.println(fastlege2);
 
+    // Sjekker at legeliste klassen sine metoder virker
     Legeliste legeliste = new Legeliste();
     legeliste.settInn(lege);
     legeliste.settInn(lege2);
@@ -42,10 +43,13 @@ public class TestLege {
       System.out.println(legene);
     }
 
+    String[] legerNavn = legeliste.stringArrayMedNavn();
+    for(String str : legerNavn) {
+      System.out.println(str);
+    }
 
-
-
-
+    System.out.println(legeliste.finnLege("Dr. Klever"));
+    System.out.println(legeliste.finnLege("Dr. Kleverre"));
 
 
   }
