@@ -30,7 +30,7 @@ public abstract class Resept {
       reit--;
       return true;
     }
-    return false;
+    return false;     // beskjed til bruker om at den er oppbrukt??
   }
 
   /**
