@@ -3,7 +3,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class BlaaResept extends Resept {
 
   private static final AtomicInteger idGenerator = new AtomicInteger();
-  private static final PRIS_BETALE = 0.25;
+  private static final PROSENT_BETALE = 0.25;
 
   public BlaaResept(Legemiddel legemiddel, Lege lege, int pasientId, int reit) {
     super(legemiddel, lege, pasientId, reit);
@@ -20,7 +20,7 @@ public class BlaaResept extends Resept {
   * @return      prisen pasienten maa betale
   */
   public double prisAaBetale() {
-    return hentLegemiddel().hentPris()*PRIS_BETALE;
+    return hentLegemiddel().hentPris()*PROSENT_BETALE;
   }
 
   @Override
