@@ -7,10 +7,10 @@ public abstract class Resept {
   protected int pasientId;   // referanse til pasienten sin id???
   protected int reit;
 
-  public Resept(Legemiddel legemiddel, Lege lege, int pasientId, int reit) {
+  public Resept(Legemiddel legemiddel, Lege utskrivendeLege, int pasientId, int reit) {
     this.legemiddel = legemiddel;
-    this.lege = lege;
-    this.pasient = pasient;
+    this.utskrivendeLege = utskrivendeLege;
+    this.pasientId = pasientId;
     this.reit = reit;
   }
 
@@ -26,12 +26,11 @@ public abstract class Resept {
   * @return      om resepten kunne brukes
   */
   public boolean bruk() {
-    if(reit > 0) {
+    if(hentReit() > 0) {
       reit--;
       return true;
-    } else if(reit == 0) {
-      return false;
     }
+    return false;
   }
 
   /**

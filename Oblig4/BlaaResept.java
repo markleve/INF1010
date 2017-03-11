@@ -3,10 +3,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class BlaaResept extends Resept {
 
   private static final AtomicInteger idGenerator = new AtomicInteger();
-  private static final PROSENT_BETALE = 0.25;
+  private static final double PROSENT_BETALE = 0.25;
 
-  public BlaaResept(Legemiddel legemiddel, Lege lege, int pasientId, int reit) {
-    super(legemiddel, lege, pasientId, reit);
+  public BlaaResept(Legemiddel legemiddel, Lege utskrivendeLege, int pasientId, int reit) {
+    super(legemiddel, utskrivendeLege, pasientId, reit);
     id = idGenerator.getAndIncrement();
   }
   /**
