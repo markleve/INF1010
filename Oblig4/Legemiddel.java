@@ -22,4 +22,9 @@ abstract class Legemiddel {
   public String hentNavn() { return navn; }
   public double hentPris() { return pris; }
   public double hentVirkestoff() { return virkestoff; }
+
+  public String toString() {
+    return "Legemiddel [" + hentId() + "] " + hentNavn() + "\nPris: "
+    + hentPris() + "\nVirkestoff: " + hentVirkestoff(); 
+  }
 }
