@@ -9,6 +9,12 @@ public class HvitResept extends Resept {
     id = idGenerator.getAndIncrement();
   }
 
+  /**
+  * Returnerer reseptens farge. Enten "blaa" eller "hvit".
+  * @return      reseptens farge
+  */
+  public String farge() { return "hvit"; }
+
   @Override
   public String toString() {
     return "Hvit resept " + super.toString();
