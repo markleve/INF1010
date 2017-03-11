@@ -9,12 +9,17 @@ public class Lege implements Comparable<Lege> {
 
   public String hentNavn() { return navn; }
   public Koe<Resept> hentReseptliste() {return reseptliste; }
+
   public void leggTilResept(Resept resept) {
     hentReseptliste().settInn(resept);
   }
 
+  // a.compareTo(b) returnerer folgende tall:
+  //    Negativt   a < b
+  //    0          a = b
+  //    Positivt   a > b
   public int compareTo(Lege annenLege) {
-    return 1;
+    return hentNavn().compareTo(annenLege.hentNavn());
   }
 
   @Override

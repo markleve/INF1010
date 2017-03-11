@@ -19,5 +19,15 @@ public class TestLege {
 
     Lege lege3 = new Lege("Dr. Lala");
     System.out.println(lege3);
+
+    System.out.println("\nSammenligning av legene");
+
+    System.out.println(lege2.compareTo(lege));
+    System.out.println(lege2.compareTo(lege2));
+    System.out.println(lege2.compareTo(lege3));
+
+
+
+
   }
 }
