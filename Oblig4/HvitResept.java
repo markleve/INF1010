@@ -15,6 +15,14 @@ public class HvitResept extends Resept {
   */
   public String farge() { return "hvit"; }
 
+  /**
+  * Returnerer prisen pasienten maa betale.
+  * @return      prisen pasienten maa betale
+  */
+  public double prisAaBetale() {
+    return hentLegemiddel().hentPris();
+  }
+
   @Override
   public String toString() {
     return "Hvit resept " + super.toString();
