@@ -8,7 +8,17 @@ public class Legeliste extends OrdnetLenkeliste<Lege> {
    * @param   navn    navnet til legen
    * @return  legen
    */
+
+  // hva skal vi gjore dersom legelisten er tom??? returnere null??
   public Lege finnLege(String navn) {
+    Lege gjeldende = hode;
+    while(gjeldende.neste != hale) {
+      gjeldende = gjeldende.neste;    // gaar her til det forste element i legelisten
+      if(gjeldende.data.hentNavn().equals(navn)) {
+        return gjeldende.data;      // returnerer legen
+      }
+    }
+    return null;
   }
 
   /**
@@ -17,6 +27,14 @@ public class Legeliste extends OrdnetLenkeliste<Lege> {
    * @return array med navn til alle legene
    */
   public String[] stringArrayMedNavn() {
-
+    Lege gjeldende = hode;
+    String[] legelisteNavn = new String[storrelse()];
+    int indeks = 0;
+    while(gjeldende.neste != hale) {
+      gjeldende = gjeldende.neste;      // forste element i legelisten
+      legelisteNavn[indeks] = gjeldende.data.hentNavn();
+      indeks++;
+    }
+    return legelisteNavn;
   }
 }
