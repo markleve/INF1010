@@ -28,8 +28,5 @@ public class TestLegemiddel {
     System.out.println(legemiddelC2);
     System.out.println(legemiddelC3);
 
-
-    // Id tildelingen fungerer ikke som den skal .. :(
-
   }
 }

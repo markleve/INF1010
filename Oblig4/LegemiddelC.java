@@ -2,11 +2,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class LegemiddelC extends Legemiddel {
 
-  private static final AtomicInteger nesteIdC = new AtomicInteger();
+  private static final AtomicInteger idGenerator = new AtomicInteger();
 
   public LegemiddelC(String navn, double pris, double virkestoff) {
     super(navn, pris, virkestoff);
-    id = nesteIdC.getAndIncrement();
+    id = idGenerator.getAndIncrement();
   }
 
   @Override

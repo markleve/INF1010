@@ -6,7 +6,7 @@ public class Pasient {
   private String adresse;
   private int postnummer;
   private Stabel<Resept> reseptliste;
-  private static final AtomicInteger nesteId = new AtomicInteger();
+  private static final AtomicInteger idGenerator = new AtomicInteger();
   private static int id;    // skal dene gjores finale?? Slik at den ikke kan endre?
 
   public Pasient(String navn, long fodselsNr, String adresse, int postnummer) {
@@ -14,7 +14,7 @@ public class Pasient {
     this.fodselsNr = fodselsNr;
     this.adresse = adresse;
     this.postnummer = postnummer;
-    id = nesteId.getAndIncrement();
+    id = idGenerator.getAndIncrement();
     reseptliste = new Stabel<Resept>();
   }
 

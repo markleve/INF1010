@@ -14,7 +14,6 @@ abstract class Legemiddel {
     this.navn = navn;
     this.pris = pris;
     this.virkestoff = virkestoff;
-  //  id = 0;
   }
 
   public int hentId() { return id; }

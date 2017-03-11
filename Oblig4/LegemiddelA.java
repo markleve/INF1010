@@ -3,13 +3,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class LegemiddelA extends Legemiddel {
 
   private int styrke;
-  private static final AtomicInteger nesteIdA = new AtomicInteger();
-
+  private static final AtomicInteger idGenerator = new AtomicInteger();
 
   public LegemiddelA(String navn, double pris, double virkestoff, int styrke) {
     super(navn, pris, virkestoff);
     this.styrke = styrke;
-    id = nesteIdA.getAndIncrement();
+    id = idGenerator.getAndIncrement();
   }
 
   public int hentNarkotiskStyrke() { return styrke;}
