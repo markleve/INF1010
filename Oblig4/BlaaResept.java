@@ -1,3 +1,4 @@
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class BlaaResept extends Resept {
 
