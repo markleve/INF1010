@@ -7,7 +7,7 @@ public class Pasient {
   private int postnummer;
   private Stabel<Resept> reseptliste;
   private static final AtomicInteger idGenerator = new AtomicInteger();
-  private static int id;    // skal dene gjores finale?? Slik at den ikke kan endre?
+  private int id;    // skal dene gjores finale?? Slik at den ikke kan endre?
 
   public Pasient(String navn, long fodselsNr, String adresse, int postnummer) {
     this.navn = navn;
