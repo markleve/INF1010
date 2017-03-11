@@ -11,7 +11,7 @@ public class Legeliste extends OrdnetLenkeliste<Lege> {
 
   // hva skal vi gjore dersom legelisten er tom??? returnere null??
   public Lege finnLege(String navn) {
-    Lege gjeldende = hode;
+    Node gjeldende = hode;
     while(gjeldende.neste != hale) {
       gjeldende = gjeldende.neste;    // gaar her til det forste element i legelisten
       if(gjeldende.data.hentNavn().equals(navn)) {
@@ -27,7 +27,7 @@ public class Legeliste extends OrdnetLenkeliste<Lege> {
    * @return array med navn til alle legene
    */
   public String[] stringArrayMedNavn() {
-    Lege gjeldende = hode;
+    Node gjeldende = hode;
     String[] legelisteNavn = new String[storrelse()];
     int indeks = 0;
     while(gjeldende.neste != hale) {
