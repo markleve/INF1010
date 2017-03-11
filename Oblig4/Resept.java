@@ -20,7 +20,7 @@ public abstract class Resept {
   public int hentPasientId() { return pasientId; }
   public int hentReit() { return reit; }
 
-  @Override
+  // skal det vaere en @Override her ???
   public String toString() {
     return "[" + hentId() + "]" + "\nLegemiddel: " + hentLegemiddel()
     + "\nUtskrivende lege: " + hentLege() + "\nPasient id: "
