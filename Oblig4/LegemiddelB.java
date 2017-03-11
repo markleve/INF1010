@@ -9,4 +9,9 @@ public class LegemiddelB extends Legemiddel {
   }
 
   public int hentVanedannendeStyrke() {return styrke; }
+
+  public String toString() {
+    return "Vanedannende " + super.toString() + "\nVanedannende styrke: "
+    + hentVanedannendeStyrke();
+  }
 }
