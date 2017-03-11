@@ -6,8 +6,7 @@ abstract class Legemiddel {
   // trenger subklassene tilgang til variablene?
   // kan bruke hent metodene i subkassene for aa gi tilgang til variablene
   protected String navn;
-  private static AtomicInteger nesteId = new AtomicInteger();
-  protected static int id;    // skal dene gjores finale?? Slik at den ikke kan endre?
+  protected int id;    // skal dene gjores finale?? Slik at den ikke kan endre?
   protected double pris;
   protected double virkestoff;
 
@@ -15,7 +14,7 @@ abstract class Legemiddel {
     this.navn = navn;
     this.pris = pris;
     this.virkestoff = virkestoff;
-    id = nesteId.incrementAndGet();
+  //  id = 0;
   }
 
   public int hentId() { return id; }
