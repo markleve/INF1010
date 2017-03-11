@@ -26,6 +26,13 @@ public class TestLege {
     System.out.println(lege2.compareTo(lege2));
     System.out.println(lege2.compareTo(lege3));
 
+    Fastlege fastlege = new Fastlege("Dr. Kim", 12334);
+    Fastlege fastlege2 = new Fastlege("Dr. Hans", 54334);
+    System.out.println(fastlege);
+    System.out.println(fastlege2);
+
+
+
 
 
 
