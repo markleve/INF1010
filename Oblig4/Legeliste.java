@@ -26,6 +26,8 @@ public class Legeliste extends OrdnetLenkeliste<Lege> {
    * i samme rekkefoelge som de staar i listen.
    * @return array med navn til alle legene
    */
+
+   // hva skal vi gjore dersom legelisten er tom??? returnere null??
   public String[] stringArrayMedNavn() {
     Node gjeldende = hode;
     String[] legelisteNavn = new String[storrelse()];
