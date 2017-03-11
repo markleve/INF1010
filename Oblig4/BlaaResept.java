@@ -8,6 +8,7 @@ public class BlaaResept extends Resept {
     super(legemiddel, lege, pasientId, reit);
     id = idGenerator.getAndIncrement();
   }
+  public String farge() { return "Blå"; }
 
   @Override
   public String toString() {
