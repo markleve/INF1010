@@ -20,7 +20,7 @@ public class BlaaResept extends Resept {
   * @return      prisen pasienten maa betale
   */
   public double prisAaBetale() {
-    return hentLegemiddel().hentPris()*PROSENT_BETALE;
+    return legemiddel.hentPris()*PROSENT_BETALE;
   }
 
   @Override

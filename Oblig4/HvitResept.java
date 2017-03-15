@@ -20,7 +20,7 @@ public class HvitResept extends Resept {
   * @return      prisen pasienten maa betale
   */
   public double prisAaBetale() {
-    return hentLegemiddel().hentPris();
+    return legemiddel.hentPris();
   }
 
   @Override
