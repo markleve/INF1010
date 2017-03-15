@@ -47,9 +47,9 @@ public abstract class Resept {
 
   // skal det vaere en @Override her ???
   public String toString() {
-    return "[" + hentId() + "]" + "\nLegemiddel: " + hentLegemiddel()
-    + "\nUtskrivende lege: " + hentLege() + "\nPasient id: "
-    + hentPasientId() + "\nReit: " + hentReit();
+    return "[" + id + "]" + "\nLegemiddel: " + legemiddel
+    + "\nUtskrivende lege: " + utskrivendeLege + "\nPasient id: "
+    + pasientId + "\nReit: " + reit;
   }
 
 }

@@ -29,13 +29,13 @@ public class Pasient {
   // skal man kalle paa metoden for aa faa reseptlisten, eller kan
   // man bare bruke variablenavnet: reseptliste
   public void leggTilResept(Resept resept) {
-    hentReseptliste().settInn(resept);
+    reseptliste.settInn(resept);
   }
 
   @Override
   public String toString() {
-    return "\nPassient " + "[" + hentId() + "]: " + hentNavn() + " (" +
-    hentFodselsnummer() + ")\n" + "Adresse: " + hentGateadresse() +
-    "\nPostnummer: " + hentPostnummer();
+    return "\nPassient " + "[" + id + "]: " + navn + " (" +
+    fodselsNr + ")\n" + "Adresse: " + adresse +
+    "\nPostnummer: " + postnummer;
   }
 }

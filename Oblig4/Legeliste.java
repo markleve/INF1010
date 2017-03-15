@@ -30,7 +30,7 @@ public class Legeliste extends OrdnetLenkeliste<Lege> {
    // hva skal vi gjore dersom legelisten er tom??? returnere null??
   public String[] stringArrayMedNavn() {
     Node gjeldende = hode;
-    String[] legelisteNavn = new String[storrelse()];
+    String[] legelisteNavn = new String[this.storrelse()];
     int indeks = 0;
     while(gjeldende.neste != hale) {
       gjeldende = gjeldende.neste;      // forste element i legelisten

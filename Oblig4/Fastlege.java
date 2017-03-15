@@ -16,7 +16,7 @@ public class Fastlege extends Lege implements Kommuneavtale {
 
   @Override
   public String toString() {
-    return super.toString() + " har avtalenummer " + hentAvtalenummer();
+    return super.toString() + " har avtalenummer " + avtalenummer;
   }
 
 }
