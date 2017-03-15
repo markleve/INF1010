@@ -1,3 +1,6 @@
+// lage en teller som holder styr paa tallet (statisk)
+// ogsaa lage en id som settes lik telleren og deretter oppdatere telleren
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Pasient {
