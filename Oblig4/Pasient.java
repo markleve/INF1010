@@ -1,5 +1,7 @@
 
-
+/**
+* Klassen representerer en pasient, med dens informasjon og egenskaper.
+*/
 public class Pasient {
   private String navn;
   private long fodselsNr;
@@ -19,12 +21,35 @@ public class Pasient {
     reseptliste = new Stabel<Resept>();
   }
 
-  // hvordan skal man skrive javadoc til get metoder ??
+  /**
+  * Returnerer pasientens id.
+  * @return      pasientens id
+  */
   public int hentId() { return id; }
+  /**
+  * Returnerer pasientens navn.
+  * @return      pasientens navn
+  */
   public String hentNavn() { return navn; }
+  /**
+  * Returnerer pasientens fodselsnummer.
+  * @return      pasientens fodselsnummer
+  */
   public long hentFodselsnummer() { return fodselsNr; }
+  /**
+  * Returnerer pasientens adresse.
+  * @return      pasientens adresse
+  */
   public String hentGateadresse() { return adresse; }
+  /**
+  * Returnerer pasientens postnummer.
+  * @return      pasientens postnummer
+  */
   public int hentPostnummer() { return postnummer; }
+  /**
+  * Returnerer listen (en stabel) over pasientens resepter.
+  * @return      pasientens reseptliste
+  */
   public Stabel<Resept> hentReseptliste() { return reseptliste; }
 
   /**
@@ -35,6 +60,10 @@ public class Pasient {
     reseptliste.settInn(resept);
   }
 
+  /**
+   * Returnerer en string med informasjon om pasienten.
+   * @return   informasjon om pasienten
+   */
   @Override
   public String toString() {
     return "\nPassient " + "[" + id + "]: " + navn + " (" +
