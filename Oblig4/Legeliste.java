@@ -11,7 +11,6 @@ public class Legeliste extends OrdnetLenkeliste<Lege> {
 
   // for each lokke: this (denne legelisten!)
   public Lege finnLege(String navn) {
-
     for(Lege lege : this) {
       if(lege.hentNavn().equals(navn)) {
         return lege;
@@ -26,6 +25,13 @@ public class Legeliste extends OrdnetLenkeliste<Lege> {
   * @return array med navn til alle legene
   */
   public String[] stringArrayMedNavn() {
+    int indeks = 0;
+    String[] legelisteNavn = new String[this.storrelse()];
+    for(Lege lege : this) {
+      legelisteNavn[indeks] = lege.hentNavn();
+      indeks++;
+    }
+/*
     Node gjeldende = hode;
     String[] legelisteNavn = new String[this.storrelse()];
     int indeks = 0;
@@ -33,7 +39,7 @@ public class Legeliste extends OrdnetLenkeliste<Lege> {
       gjeldende = gjeldende.neste;      // forste element i legelisten
       legelisteNavn[indeks] = gjeldende.data.hentNavn();
       indeks++;
-    }
+    }*/
     return legelisteNavn;
   }
 
