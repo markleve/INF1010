@@ -24,5 +24,13 @@ class TestLegeliste {
 
     System.out.println(legeliste.finnLege("Dr. Klever"));
     System.out.println(legeliste.finnLege("Dr. lala"));
+
+    System.out.println("------------------");
+
+    String[] legelisteNavn = legeliste.stringArrayMedNavn();
+
+    for(String navn : legelisteNavn) {
+      System.out.println(navn);  
+    }
   }
 }
