@@ -18,16 +18,6 @@ public class Legeliste extends OrdnetLenkeliste<Lege> {
       }
     }
     return null;
-
-    /*
-    Node gjeldende = hode;
-    while(gjeldende.neste != hale) {
-      gjeldende = gjeldende.neste;    // gaar her til det forste element i legelisten
-      if(gjeldende.data.hentNavn().equals(navn)) {
-        return gjeldende.data;      // returnerer legen
-      }
-    }
-    return null;*/
   }
 
   /**
