@@ -4,6 +4,7 @@
 2, Sven Svendsen, 10111224244, Storgata 67, 5341
 3, Juni Olsen, 21049563451, Blåbærstien 423b, 3532
 4, Marie Klever, 00232374932, Moerveien 36a, 1430
+5, Marie Klever, 08493258932, Moerveien, 1430
 
 # Legemidler (ID, navn, type, pris, virkestoff [, styrke])
 0, Predizol, a, 450.00, 75.0, 8

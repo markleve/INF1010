@@ -8,10 +8,11 @@ public class Fastlege extends Lege implements Kommuneavtale {
     this.avtalenummer = avtalenummer;
   }
 
-  // skal man skrive @Override over metoder fra interface?
-  // man overskriver jo ikke en metode, da en metode ikke er
-  // implementert ennaa. Det er bare signaturen som er laget
-  // i interfacet .... ????
+  /**
+  * Returnerer fastlegens avtalenummer
+  * @return       fastlegens avtalenummer
+  */
+  @Override
   public int hentAvtalenummer() { return avtalenummer; }
 
   @Override

@@ -18,7 +18,21 @@ public class TestResept {
     Pasient pasient3 = new Pasient("Markus Johan", 14345697, "Haabakken 32", 4355);
 
     BlaaResept resept1 = new BlaaResept(legemiddelA, lege2, pasient.hentId(), 2);
+    BlaaResept resept2 = new BlaaResept(legemiddelA, lege2, pasient.hentId(), 2);
+    BlaaResept resept3 = new BlaaResept(legemiddelA, lege2, pasient.hentId(), 2);
+
     HvitResept resept4 = new HvitResept(legemiddelA, lege2, pasient.hentId(), 10);
+    HvitResept resept5 = new HvitResept(legemiddelA, lege2, pasient.hentId(), 10);
+    HvitResept resept6 = new HvitResept(legemiddelA, lege2, pasient.hentId(), 10);
+
+    System.out.println(resept1);
+    System.out.println(resept2);
+    System.out.println(resept3);
+
+    System.out.println(resept4);
+    System.out.println(resept5);
+    System.out.println(resept6);
+
 
     System.out.println(resept1.farge());
     System.out.println(resept4.farge());

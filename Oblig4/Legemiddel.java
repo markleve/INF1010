@@ -1,12 +1,8 @@
-import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class Legemiddel {
 
-  // skal variablene vaere protected eller private?
-  // trenger subklassene tilgang til variablene?
-  // kan bruke hent metodene i subkassene for aa gi tilgang til variablene
   protected String navn;
-  protected int id;    // skal dene gjores finale?? Slik at den ikke kan endre?
+  protected int id;
   protected double pris;
   protected double virkestoff;
 
@@ -21,7 +17,7 @@ public abstract class Legemiddel {
   public double hentPris() { return pris; }
   public double hentVirkestoff() { return virkestoff; }
 
-  // overskriver denne en annen toString metode??
+  @Override
   public String toString() {
     return "legemiddel [" + id + "] " + navn + "\nPris: "
     + pris + "\nVirkestoff: " + virkestoff;

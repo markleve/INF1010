@@ -1,7 +1,4 @@
-// lage en teller som holder styr paa tallet (statisk)
-// ogsaa lage en id som settes lik telleren og deretter oppdatere telleren
 
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Pasient {
   private String navn;
@@ -9,15 +6,16 @@ public class Pasient {
   private String adresse;
   private int postnummer;
   private Stabel<Resept> reseptliste;
-  private static final AtomicInteger idGenerator = new AtomicInteger();
-  private int id;    // skal dene gjores finale?? Slik at den ikke kan endre?
+  private static int teller = 0;
+  private int id;
 
   public Pasient(String navn, long fodselsNr, String adresse, int postnummer) {
     this.navn = navn;
     this.fodselsNr = fodselsNr;
     this.adresse = adresse;
     this.postnummer = postnummer;
-    id = idGenerator.getAndIncrement();
+    id = teller;
+    teller++;
     reseptliste = new Stabel<Resept>();
   }
 
@@ -29,8 +27,10 @@ public class Pasient {
   public int hentPostnummer() { return postnummer; }
   public Stabel<Resept> hentReseptliste() { return reseptliste; }
 
-  // skal man kalle paa metoden for aa faa reseptlisten, eller kan
-  // man bare bruke variablenavnet: reseptliste
+  /**
+   * Legger ny resept til reseptlisten
+   * @param   resept    resepten som legges til
+   */
   public void leggTilResept(Resept resept) {
     reseptliste.settInn(resept);
   }

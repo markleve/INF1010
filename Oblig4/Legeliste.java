@@ -2,14 +2,14 @@
 public class Legeliste extends OrdnetLenkeliste<Lege> {
 
   /**
-   * Soeker gjennom listen etter en lege med samme navn som `navn`
-   * og returnerer legen (uten aa fjerne den fra listen).
-   * Hvis ingen slik lege finnes, returneres `null`.
-   * @param   navn    navnet til legen
-   * @return  legen
-   */
+  * Soeker gjennom listen etter en lege med samme navn som `navn`
+  * og returnerer legen (uten aa fjerne den fra listen).
+  * Hvis ingen slik lege finnes, returneres `null`.
+  * @param   navn    navnet til legen
+  * @return  legen
+  */
 
-  // hva skal vi gjore dersom legelisten er tom??? returnere null??
+  // for each lokke: this (denne legelisten!)
   public Lege finnLege(String navn) {
     Node gjeldende = hode;
     while(gjeldende.neste != hale) {
@@ -22,12 +22,10 @@ public class Legeliste extends OrdnetLenkeliste<Lege> {
   }
 
   /**
-   * Returnerer et String[] med navnene til alle legene i listen
-   * i samme rekkefoelge som de staar i listen.
-   * @return array med navn til alle legene
-   */
-
-   // hva skal vi gjore dersom legelisten er tom??? returnere null??
+  * Returnerer et String[] med navnene til alle legene i listen
+  * i samme rekkefoelge som de staar i listen.
+  * @return array med navn til alle legene
+  */
   public String[] stringArrayMedNavn() {
     Node gjeldende = hode;
     String[] legelisteNavn = new String[this.storrelse()];
@@ -39,4 +37,5 @@ public class Legeliste extends OrdnetLenkeliste<Lege> {
     }
     return legelisteNavn;
   }
+
 }

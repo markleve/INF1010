@@ -1,16 +1,20 @@
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class LegemiddelB extends Legemiddel {
 
   private int styrke;
-  private static final AtomicInteger idGenerator = new AtomicInteger();
+  private static int teller = 0;
 
   public LegemiddelB(String navn, double pris, double virkestoff, int styrke) {
     super(navn, pris, virkestoff);
     this.styrke = styrke;
-    id = idGenerator.getAndIncrement();
+    id = teller;
+    teller++;
   }
 
+  /**
+  * Returnerer styrken til det vanedannende legemiddelet
+  * @return       styrken
+  */
   public int hentVanedannendeStyrke() {return styrke; }
 
   @Override

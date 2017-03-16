@@ -4,7 +4,7 @@ public abstract class Resept {
   protected int id;
   protected Legemiddel legemiddel;
   protected Lege utskrivendeLege;
-  protected int pasientId;   // referanse til pasienten sin id???
+  protected int pasientId;
   protected int reit;
 
   public Resept(Legemiddel legemiddel, Lege utskrivendeLege, int pasientId, int reit) {
@@ -45,7 +45,7 @@ public abstract class Resept {
   */
   abstract public double prisAaBetale();
 
-  // skal det vaere en @Override her ???
+  @Override
   public String toString() {
     return "[" + id + "]" + "\nLegemiddel: " + legemiddel
     + "\nUtskrivende lege: " + utskrivendeLege + "\nPasient id: "
