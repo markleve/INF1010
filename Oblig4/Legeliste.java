@@ -11,6 +11,15 @@ public class Legeliste extends OrdnetLenkeliste<Lege> {
 
   // for each lokke: this (denne legelisten!)
   public Lege finnLege(String navn) {
+
+    for(Lege lege : this) {
+      if(lege.hentNavn().equals(navn)) {
+        return lege;
+      }
+    }
+    return null;
+
+    /*
     Node gjeldende = hode;
     while(gjeldende.neste != hale) {
       gjeldende = gjeldende.neste;    // gaar her til det forste element i legelisten
@@ -18,7 +27,7 @@ public class Legeliste extends OrdnetLenkeliste<Lege> {
         return gjeldende.data;      // returnerer legen
       }
     }
-    return null;
+    return null;*/
   }
 
   /**
