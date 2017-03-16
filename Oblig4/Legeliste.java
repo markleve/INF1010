@@ -31,15 +31,6 @@ public class Legeliste extends OrdnetLenkeliste<Lege> {
       legelisteNavn[indeks] = lege.hentNavn();
       indeks++;
     }
-/*
-    Node gjeldende = hode;
-    String[] legelisteNavn = new String[this.storrelse()];
-    int indeks = 0;
-    while(gjeldende.neste != hale) {
-      gjeldende = gjeldende.neste;      // forste element i legelisten
-      legelisteNavn[indeks] = gjeldende.data.hentNavn();
-      indeks++;
-    }*/
     return legelisteNavn;
   }
 
