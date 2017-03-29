@@ -1,0 +1,32 @@
+
+
+abstract class Rute {
+  protected int rad;
+  protected int kolonne;
+  protected Labyrint tilhorendeLabyrint;
+  protected Rute naboNord;
+  protected Rute naboSyd;
+  protected Rute naboOst;
+  protected Rute naboVest;
+
+  public Rute(int rad, int kolonne, Labyrint tilhorendeLabyrint, Rute naboNord,
+  Rute naboSyd, Rute naboOst, Rute naboVest) {
+    this.rad = rad;
+    this.kolonne = kolonne;
+    this.tilhorendeLabyrint = tilhorendeLabyrint;
+    this.naboNord = naboNord;
+    this.naboSyd = naboSyd;
+    this.naboOst = naboOst;
+    this.naboVest = naboVest;
+  }
+
+  public int hentRad() { return rad; }
+  public int hentKolonne() { return kolonne; }
+  public Labyrint hentTilhorendeLabyrint() { return tilhorendeLabyrint; }
+  public Rute hentNaboNord() { return naboNord; }
+  public Rute hentNaboSyd() { return naboSyd; }
+  public Rute hentNaboOst() { return naboOst; }
+  public Rute hentNaboVest() { return naboVest; }
+
+  abstract char tilTegn();
+}

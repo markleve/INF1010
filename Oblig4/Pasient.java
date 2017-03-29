@@ -1,16 +1,40 @@
 
+// hva skal skrives i kommentaren om selve klassen??
+
+// hvordan kommentere underklasse og grensesnitt??
+
+// i get og set metoder, skal man linke til variabelen som settes/hentes i metoden??
+
 /**
-* Klassen representerer en pasient, med dens informasjon og egenskaper.
+* Pasient Objekt
+*
+* Klassen representerer en pasient med dens infrmasjon og egenskaper.
+*
+* @author Marie Klever
+* @version 1.0
 */
 public class Pasient {
   private String navn;
   private long fodselsNr;
   private String adresse;
   private int postnummer;
+
+  // hvordan skal man kommentere variablene som ikke kommer inn i Konstruktoren
+  // men som bare settes her ??
   private Stabel<Resept> reseptliste;
   private static int teller = 0;
   private int id;
 
+  // er det slik man skal kommentere i konstruktoren??
+  /**
+  * Konstruktoren.
+  *
+  * Oppretter en ny instans av Pasient klassen.
+  * @param      navn          pasientens navn
+  * @param      fodselsNr     pasientens fodselsnummer
+  * @param      adresse       pasientens adresse
+  * @param      postnummer    pasientens postnummer
+  */
   public Pasient(String navn, long fodselsNr, String adresse, int postnummer) {
     this.navn = navn;
     this.fodselsNr = fodselsNr;
@@ -53,17 +77,17 @@ public class Pasient {
   public Stabel<Resept> hentReseptliste() { return reseptliste; }
 
   /**
-   * Legger ny resept til reseptlisten
-   * @param   resept    resepten som legges til
-   */
+  * Legger ny resept til reseptlisten
+  * @param   resept    resepten som legges til
+  */
   public void leggTilResept(Resept resept) {
     reseptliste.settInn(resept);
   }
 
   /**
-   * Returnerer en string med informasjon om pasienten.
-   * @return   informasjon om pasienten
-   */
+  * Returnerer en string med informasjon om pasienten.
+  * @return   informasjon om pasienten
+  */
   @Override
   public String toString() {
     return "\nPassient " + "[" + id + "]: " + navn + " (" +

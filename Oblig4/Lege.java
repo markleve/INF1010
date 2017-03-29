@@ -1,5 +1,11 @@
+
+/**
+* Klassen representerer en lege med dens informasjon og egenskaper.
+* Legen identifiseres med navnet sitt som er unikt.
+* Reseptene legen skriver ut legges i en liste i form av en ko.
+*/
 public class Lege implements Comparable<Lege> {
-  private String navn;   // denne skal vaere unik
+  private String navn;
   private Koe<Resept> reseptliste;
 
   public Lege(String navn) {

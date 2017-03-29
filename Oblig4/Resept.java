@@ -26,7 +26,7 @@ public abstract class Resept {
   * @return      om resepten kunne brukes
   */
   public boolean bruk() {
-    if(hentReit() > 0) {
+    if(reit > 0) {    
       reit--;
       return true;
     }
