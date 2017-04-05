@@ -20,7 +20,7 @@ public class LabyrintTest {
           System.out.println(labArray[i][j]);
         }
       }
-/*
+
       System.out.println("-------- Rute nummer 2,2 informasjon -------");
 
       Rute rute1 = labArray[1][1];
@@ -156,7 +156,7 @@ public class LabyrintTest {
       System.out.println("Syd " + rute9.hentNaboSyd());
       System.out.println("Vest " + rute9.hentNaboVest());
 
-*/
+
 
 
 

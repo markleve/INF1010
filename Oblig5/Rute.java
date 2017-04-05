@@ -23,12 +23,43 @@ abstract class Rute {
   public Rute hentNaboOst() { return naboOst; }
   public Rute hentNaboVest() { return naboVest; }
 
-  public void setAlleNaboer(Rute naboNord, Rute naboOst, Rute naboSyd, Rute naboVest) {
-    this.naboNord = naboNord;
-    this.naboOst = naboOst;
-    this.naboSyd = naboSyd;
-    this.naboVest = naboVest;
+  public void settAlleNaboer(Rute[][] labArray) {
+    setNaboNord(labArray);
+    setNaboOst(labArray);
+    setNaboSyd(labArray);
+    setNaboVest(labArray);
   }
 
+  public void setNaboNord(Rute[][] labArray) {
+    if(rad-2 < 0) {
+      naboNord = null;
+    } else {
+      naboNord = labArray[rad-2][kolonne-1];
+    }
+  }
+
+  public void setNaboOst(Rute[][] labArray) {
+    if(kolonne+1 > tilhorendeLabyrint.hentAntKolonner()) {
+      naboOst = null;
+    } else {
+      naboOst = labArray[rad-1][kolonne];
+    }
+  }
+
+  public void setNaboSyd(Rute[][] labArray) {
+    if(rad+1 > tilhorendeLabyrint.hentAntRader()) {
+      naboSyd = null;
+    } else {
+      naboSyd = labArray[rad][kolonne-1];
+    }
+  }
+
+  public void setNaboVest(Rute[][] labArray) {
+    if(kolonne-2 < 0) {
+      naboVest = null;
+    } else {
+      naboVest = labArray[rad-1][kolonne-2];
+    }
+  }
   abstract char tilTegn();
 }
