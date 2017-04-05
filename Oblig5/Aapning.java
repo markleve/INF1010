@@ -6,4 +6,9 @@ public class Aapning extends HvitRute {
     super(rad, kolonne, tilhorendeLabyrint);
   }
 
+  @Override
+  public String toString() {
+    return "Åpning [" + rad + "][" + kolonne + "]";
+  }
+
 }

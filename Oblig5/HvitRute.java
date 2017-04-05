@@ -13,6 +13,6 @@ public class HvitRute extends Rute {
 
   @Override
   public String toString() {
-    return "Hvit rute: .";
+    return tilTegn() + " [" + rad + "][" + kolonne + "]";
   }
 }

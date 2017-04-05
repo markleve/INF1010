@@ -23,5 +23,12 @@ abstract class Rute {
   public Rute hentNaboOst() { return naboOst; }
   public Rute hentNaboVest() { return naboVest; }
 
+  public void setAlleNaboer(Rute naboNord, Rute naboOst, Rute naboSyd, Rute naboVest) {
+    this.naboNord = naboNord;
+    this.naboOst = naboOst;
+    this.naboSyd = naboSyd;
+    this.naboVest = naboVest;
+  }
+
   abstract char tilTegn();
 }

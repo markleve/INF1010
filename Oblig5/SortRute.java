@@ -13,6 +13,6 @@ public class SortRute extends Rute {
 
   @Override
   public String toString() {
-    return "Sort rute: #";
+    return tilTegn() +  " [" + rad + "][" + kolonne + "]";
   }
 }
