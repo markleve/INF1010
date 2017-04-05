@@ -40,12 +40,13 @@ public class Labyrint {
 
   public static Labyrint konstruerLabyrint(Scanner sc) {
     Labyrint labyrint = new Labyrint();
-    konstruerForsteLinje(sc, labyrint);
+    char[] charArrayForste = sc.nextLine().toCharArray();
+    konstruerEnLinje(charArrayForste, labyrint);
 
     while(sc.hasNextLine()) {
       char[] charArray = sc.nextLine().toCharArray();
       if(!sc.hasNextLine()) {
-        konstruerSisteLinje(charArray, labyrint);
+        konstruerEnLinje(charArray, labyrint);
         break;
       }
       for(int i = 0; i < charArray.length; i++) {
@@ -66,19 +67,7 @@ public class Labyrint {
     return labyrint;
   }
 
-  public static void konstruerForsteLinje(Scanner sc, Labyrint labyrint) {
-    char[] charArray = sc.nextLine().toCharArray();
-    for(int i = 0; i < charArray.length; i++) {
-      if(charArray[i] == '#') {
-        labArray[radStart][i] = new SortRute(radStart+1, i+1, labyrint);  // brukeren skal tenke at labyrinten begynner fra plass (1,1)
-      } else if(charArray[i] == '.') {
-        labArray[radStart][i] = new Aapning(radStart+1, i+1, labyrint);
-      }
-    }
-    radStart++;
-  }
-
-  public static void konstruerSisteLinje(char[] charArray, Labyrint labyrint) {
+  public static void konstruerEnLinje(char[] charArray, Labyrint labyrint) {
     for(int i = 0; i < charArray.length; i++) {
       if(charArray[i] == '#') {
         labArray[radStart][i] = new SortRute(radStart+1, i+1, labyrint);  // brukeren skal tenke at labyrinten begynner fra plass (1,1)
