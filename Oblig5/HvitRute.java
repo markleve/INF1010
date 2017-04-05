@@ -2,13 +2,17 @@
 
 public class HvitRute extends Rute {
 
-  public HvitRute(int rad, int kolonne, Labyrint tilhorendeLabyrint, Rute naboNord,
-  Rute naboSyd, Rute naboOst, Rute naboVest) {
-    super(rad, kolonne, tilhorendeLabyrint, naboNord, naboSyd, naboOst, naboVest);
+  public HvitRute(int rad, int kolonne, Labyrint tilhorendeLabyrint) {
+    super(rad, kolonne, tilhorendeLabyrint);
   }
 
   @Override
   public char tilTegn() {
     return '.';
+  }
+
+  @Override
+  public String toString() {
+    return "Hvit rute: .";
   }
 }

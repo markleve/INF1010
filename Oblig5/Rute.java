@@ -9,15 +9,10 @@ abstract class Rute {
   protected Rute naboOst;
   protected Rute naboVest;
 
-  public Rute(int rad, int kolonne, Labyrint tilhorendeLabyrint, Rute naboNord,
-  Rute naboSyd, Rute naboOst, Rute naboVest) {
+  public Rute(int rad, int kolonne, Labyrint tilhorendeLabyrint) {
     this.rad = rad;
     this.kolonne = kolonne;
     this.tilhorendeLabyrint = tilhorendeLabyrint;
-    this.naboNord = naboNord;
-    this.naboSyd = naboSyd;
-    this.naboOst = naboOst;
-    this.naboVest = naboVest;
   }
 
   public int hentRad() { return rad; }
