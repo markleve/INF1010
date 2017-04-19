@@ -11,4 +11,8 @@ public class Aapning extends HvitRute {
     return "Åpning [" + rad + "][" + kolonne + "]";
   }
 
+  @Override
+  public char tilTegn() {
+    return 'A';
+  }
 }

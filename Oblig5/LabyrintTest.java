@@ -16,12 +16,13 @@ public class LabyrintTest {
       Rute[][] labArray = labyrint.hentlabArray();
 
       for(int i = 0; i < labArray.length; i++) {
+        System.out.println();
         for(int j = 0; j < labArray[i].length; j++) {
           System.out.println(labArray[i][j]);
         }
       }
 
-      System.out.println("-------- Rute nummer 2,2 informasjon -------");
+      System.out.println("-------- Rute nummer 1,1 informasjon -------");
 
       Rute rute1 = labArray[1][1];
       System.out.println(rute1);
@@ -36,7 +37,7 @@ public class LabyrintTest {
       System.out.println("Syd " + rute1.hentNaboSyd());
       System.out.println("Vest " + rute1.hentNaboVest());
 
-      System.out.println("-------- Rute nummer 1,1 informasjon -------");
+      System.out.println("-------- Rute nummer 0,0 informasjon -------");
 
       Rute rute2 = labArray[0][0];
       System.out.println(rute2);
@@ -51,7 +52,7 @@ public class LabyrintTest {
       System.out.println("Syd " + rute2.hentNaboSyd());
       System.out.println("Vest " + rute2.hentNaboVest());
 
-      System.out.println("-------- Rute nummer 1,3 informasjon -------");
+      System.out.println("-------- Rute nummer 0,2 informasjon -------");
 
       Rute rute3 = labArray[0][2];
       System.out.println(rute3);
@@ -66,7 +67,7 @@ public class LabyrintTest {
       System.out.println("Syd " + rute3.hentNaboSyd());
       System.out.println("Vest " + rute3.hentNaboVest());
 
-      System.out.println("-------- Rute nummer 3,1 informasjon -------");
+      System.out.println("-------- Rute nummer 2,0 informasjon -------");
 
       Rute rute4 = labArray[2][0];
       System.out.println(rute4);
@@ -81,7 +82,7 @@ public class LabyrintTest {
       System.out.println("Syd " + rute4.hentNaboSyd());
       System.out.println("Vest " + rute4.hentNaboVest());
 
-      System.out.println("-------- Rute nummer 3,3 informasjon -------");
+      System.out.println("-------- Rute nummer 2,2 informasjon -------");
 
       Rute rute5 = labArray[2][2];
       System.out.println(rute5);
@@ -96,7 +97,7 @@ public class LabyrintTest {
       System.out.println("Syd " + rute5.hentNaboSyd());
       System.out.println("Vest " + rute5.hentNaboVest());
 
-      System.out.println("-------- Rute nummer 1,2 informasjon -------");
+      System.out.println("-------- Rute nummer 0,1 informasjon -------");
 
       Rute rute6 = labArray[0][1];
       System.out.println(rute6);
@@ -111,7 +112,7 @@ public class LabyrintTest {
       System.out.println("Syd " + rute6.hentNaboSyd());
       System.out.println("Vest " + rute6.hentNaboVest());
 
-      System.out.println("-------- Rute nummer 3,2 informasjon -------");
+      System.out.println("-------- Rute nummer 2,1 informasjon -------");
 
       Rute rute7 = labArray[2][1];
       System.out.println(rute7);
@@ -126,7 +127,7 @@ public class LabyrintTest {
       System.out.println("Syd " + rute7.hentNaboSyd());
       System.out.println("Vest " + rute7.hentNaboVest());
 
-      System.out.println("-------- Rute nummer 2,1 informasjon -------");
+      System.out.println("-------- Rute nummer 1,0 informasjon -------");
 
       Rute rute8 = labArray[1][0];
       System.out.println(rute8);
@@ -141,9 +142,9 @@ public class LabyrintTest {
       System.out.println("Syd " + rute8.hentNaboSyd());
       System.out.println("Vest " + rute8.hentNaboVest());
 
-      System.out.println("-------- Rute nummer 2,3 informasjon -------");
+      System.out.println("-------- Rute nummer 6,8 informasjon -------");
 
-      Rute rute9 = labArray[1][2];
+      Rute rute9 = labArray[6][2];
       System.out.println(rute9);
       System.out.println("Rad: " + rute9.hentRad());
       System.out.println("Kolonne: " + rute9.hentKolonne());

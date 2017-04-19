@@ -6,76 +6,70 @@ public class Labyrint {
 
   private static int antRader;
   private static int antKolonner;
-  private static int radStart = 0;    // startelementet for rad
   private static Rute[][] labArray;
 
+  // skal antrader og antkolonner inn i konstruktøren?
+  // skal den bare lagre et rute arrat og ikke initialisere det her?
+  //    skal arrayet heller initialiseres når man leser fra fil?
   private Labyrint() {
     labArray = new Rute[antRader][antKolonner];
+    // this.labArray = labArray;
   }
 
   public int hentAntRader() { return antRader; }
   public int hentAntKolonner() { return antKolonner; }
   public Rute[][] hentlabArray() { return labArray; }
 
-  @Override
-  public String toString() {
-    return "Labyrint [" + antRader + "][" + antKolonner + "]";
-  }
-
   public static Labyrint lesFraFil(File fil) throws FileNotFoundException {
-
+    // trenger jeg denne? Eller er det nok at bare metoden kaster dette unntaket??
     if(!fil.exists()) {
       throw new FileNotFoundException();
     }
+
     Scanner sc = new Scanner(fil);
+    String[] storrelse = sc.nextLine().split(" ");  // array med størrelsen til labyrinten (antall rader og kolonner)
+    antRader = Integer.parseInt(storrelse[0]);
+    antKolonner = Integer.parseInt(storrelse[1]);
 
-    String[] linje = sc.nextLine().split(" ");
-    antRader = Integer.parseInt(linje[0]);
-    antKolonner = Integer.parseInt(linje[1]);
+    // Rute[][] labArray = new Rute[antRader][antKolonner];
 
-    Labyrint labyrint = konstruerLabyrint(sc);
+    Labyrint labyrint = new Labyrint();
+    konstruerLabyrint(sc, labyrint);
     leggTilNaboer();
     return labyrint;
   }
 
-  public static Labyrint konstruerLabyrint(Scanner sc) {
-    Labyrint labyrint = new Labyrint();
-    char[] charArrayForste = sc.nextLine().toCharArray();
-    konstruerEnLinje(charArrayForste, labyrint);
+  public static void konstruerLabyrint(Scanner sc, Labyrint labyrint) {
+    int rad = 0;
 
-    while(sc.hasNextLine()) {
+    while(sc.hasNextLine()) {       // leser inn resten av filen (selve labyrinten)
       char[] charArray = sc.nextLine().toCharArray();
-      if(!sc.hasNextLine()) {
-        konstruerEnLinje(charArray, labyrint);
-        break;
+      for(int kolonne = 0; kolonne < charArray.length; kolonne++) {
+        Rute rute = opprettRute(charArray[i], rad, kolonne);
+        labArray[rad][kolonne] = rute;
       }
-      for(int i = 0; i < charArray.length; i++) {
-        if(charArray[i] == '#') {
-          labArray[radStart][i] = new SortRute(radStart+1, i+1, labyrint);  // brukeren skal tenke at labyrinten begynner fra plass (1,1)
-        } else if(charArray[i] == '.') {
-          if(i == 0) {
-            labArray[radStart][i] = new Aapning(radStart+1, i+1, labyrint);
-          } else if(i == (charArray.length-1)) {
-            labArray[radStart][i] = new Aapning(radStart+1, i+1, labyrint);
+
+
+      /*for(int i = 0; i < charArray.length; i++) {
+        if(charArray[i] == '.') {
+          if(linjenummer == 0 || linjenummer == (antRader-1) || i == 0 || i == (charArray.length-1)) {
+            labArray[linjenummer][i] = new Aapning(linjenummer, i, labyrint);
           } else {
-            labArray[radStart][i] = new HvitRute(radStart+1, i+1, labyrint);
+            labArray[linjenummer][i] = new HvitRute(linjenummer, i, labyrint);
           }
         }
+        else if(charArray[i] == '#') {
+          labArray[linjenummer][i] = new SortRute(linjenummer, i, labyrint);
+        }
       }
-      radStart++;
-    }
-    return labyrint;
+      linjenummer++;
+    }*/
   }
 
-  public static void konstruerEnLinje(char[] charArray, Labyrint labyrint) {
-    for(int i = 0; i < charArray.length; i++) {
-      if(charArray[i] == '#') {
-        labArray[radStart][i] = new SortRute(radStart+1, i+1, labyrint);  // brukeren skal tenke at labyrinten begynner fra plass (1,1)
-      } else if(charArray[i] == '.') {
-        labArray[radStart][i] = new Aapning(radStart+1, i+1, labyrint);
-      }
+  public static Rute opprettRute(char tegn, int rad, int kolonne) {
+    if(tegn == '.') {
+      if(rad == 0 || rad == (antRader-1) || kolonne == 0 || kolonne == (antKolonner-1)) {
     }
-    radStart++;
   }
 
   public static void leggTilNaboer() {
@@ -84,5 +78,25 @@ public class Labyrint {
         labArray[rad][kol].settAlleNaboer(labArray);
       }
     }
+  }
+
+  // signaturen burde vært int rad, int kolonne (det er slik resten av programmet brukes)
+  public static Liste<String> finnUtveiFra(int kol, int rad) {
+    return labArray[rad-1][kol-1].finnUtvei();
+  }
+
+  // hva skal egentlig denne gjøre ???
+  public void settMinimalUtskrift() { }
+
+  @Override
+  public String toString() {
+    String labyrintTegning = "";
+    for(int x = 0; x < antRader; x++) {
+      for(int y = 0; y < antKolonner; y++) {
+        labyrintTegning += (labArray[x][y].tilTegn() + " ");
+      }
+      labyrintTegning += "\n";
+    }
+    return labyrintTegning;
   }
 }

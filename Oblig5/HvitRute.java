@@ -8,7 +8,7 @@ public class HvitRute extends Rute {
 
   @Override
   public char tilTegn() {
-    return '.';
+    return ' ';
   }
 
   @Override

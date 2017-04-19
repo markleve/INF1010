@@ -4,10 +4,10 @@ abstract class Rute {
   protected int rad;
   protected int kolonne;
   protected Labyrint tilhorendeLabyrint;
-  protected Rute naboNord;
-  protected Rute naboSyd;
-  protected Rute naboOst;
-  protected Rute naboVest;
+  protected Rute naboNord = null;
+  protected Rute naboSyd = null;
+  protected Rute naboOst = null;
+  protected Rute naboVest = null;
 
   public Rute(int rad, int kolonne, Labyrint tilhorendeLabyrint) {
     this.rad = rad;
@@ -24,42 +24,58 @@ abstract class Rute {
   public Rute hentNaboVest() { return naboVest; }
 
   public void settAlleNaboer(Rute[][] labArray) {
-    setNaboNord(labArray);
-    setNaboOst(labArray);
-    setNaboSyd(labArray);
-    setNaboVest(labArray);
-  }
-
-  public void setNaboNord(Rute[][] labArray) {
-    if(rad-2 < 0) {
-      naboNord = null;
-    } else {
-      naboNord = labArray[rad-2][kolonne-1];
+    if(rad > 0) {
+      naboNord = labArray[rad-1][kolonne];
+    }
+    if(kolonne+1 < tilhorendeLabyrint.hentAntKolonner() ) {
+      naboOst = labArray[rad][kolonne+1];
+    }
+    if(rad+1 < tilhorendeLabyrint.hentAntRader()) {
+      naboSyd = labArray[rad+1][kolonne];
+    }
+    if(kolonne > 0) {
+      naboVest = labArray[rad][kolonne-1];
     }
   }
 
-  public void setNaboOst(Rute[][] labArray) {
-    if(kolonne+1 > tilhorendeLabyrint.hentAntKolonner()) {
-      naboOst = null;
-    } else {
-      naboOst = labArray[rad-1][kolonne];
+  public void gaa(Rute forrigeRute, String vei, Liste<String> utveier) {
+
+    // gå tilbake til alle rutene og sette vei til en tom liste
+          // hvordan blir 'vei' til hver rute slettet/nullstilt?
+
+    // basistilfellet
+    if(this instanceof Aapning) {
+      vei += "Åpning";
+      utveier.settInn(vei);
+      return;
     }
+    vei += "(" + (rad+1) + ", " + (kolonne+1) + ") --> ";
+
+    if(forrigeRute != naboNord && (naboNord instanceof HvitRute)) {
+      naboNord.gaa(this, vei, utveier);
+    }
+    if(forrigeRute != naboOst && (naboOst instanceof HvitRute)) {
+      naboOst.gaa(this, vei, utveier);
+    }
+    if(forrigeRute != naboSyd && (naboSyd instanceof HvitRute)) {
+      naboSyd.gaa(this, vei, utveier);
+    }
+    if(forrigeRute != naboVest && (naboVest instanceof HvitRute)) {
+      naboVest.gaa(this, vei, utveier);
+    }
+    return;
   }
 
-  public void setNaboSyd(Rute[][] labArray) {
-    if(rad+1 > tilhorendeLabyrint.hentAntRader()) {
-      naboSyd = null;
-    } else {
-      naboSyd = labArray[rad][kolonne-1];
+  public Liste<String> finnUtvei() {
+    Liste<String> utveier = new OrdnetLenkeliste<String>();
+    String vei = "";
+    gaa(this, vei, utveier);
+
+    if(utveier.erTom()) {
+      utveier.settInn("Det er ingen utveier.");
     }
+    return utveier;
   }
 
-  public void setNaboVest(Rute[][] labArray) {
-    if(kolonne-2 < 0) {
-      naboVest = null;
-    } else {
-      naboVest = labArray[rad-1][kolonne-2];
-    }
-  }
   abstract char tilTegn();
 }

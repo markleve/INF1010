@@ -1,8 +1,8 @@
 
 
 public enum RuteType {
-  START,
-  SLUTT,
+  HJORNE,
+
   VEGG;     // kunne kallet denne for kant !
 
 }
