@@ -45,9 +45,10 @@ abstract class Rute {
 
     // basistilfellet
     if(this instanceof Aapning) {
-      vei += "Åpning";
+      // det er forvirrende at kolonne skal først og rad etterpå !
+      vei += "Åpning (" + (rad+1) + ", " + (kolonne+1) + ")";
       utveier.settInn(vei);
-      return;
+      return;         // må jeg returnere her, eller går den tilbake av seg selv?
     }
     vei += "(" + (rad+1) + ", " + (kolonne+1) + ") --> ";
 
@@ -63,7 +64,6 @@ abstract class Rute {
     if(forrigeRute != naboVest && (naboVest instanceof HvitRute)) {
       naboVest.gaa(this, vei, utveier);
     }
-    return;
   }
 
   public Liste<String> finnUtvei() {
