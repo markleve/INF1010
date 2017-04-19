@@ -10,8 +10,8 @@ class Main {
       Labyrint labyrint = Labyrint.lesFraFil(new File(args[0]));
       Rute[][] labArray = labyrint.hentlabArray();
 
-      int kolonne = 6;
-      int rad = 4;
+      int kolonne = 2;
+      int rad = 2;
 
       System.out.println(labyrint);
       System.out.println();

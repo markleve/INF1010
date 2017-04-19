@@ -13,7 +13,6 @@ public class Labyrint {
   //    skal arrayet heller initialiseres når man leser fra fil?
   private Labyrint() {
     labArray = new Rute[antRader][antKolonner];
-    // this.labArray = labArray;
   }
 
   public int hentAntRader() { return antRader; }
@@ -21,56 +20,40 @@ public class Labyrint {
   public Rute[][] hentlabArray() { return labArray; }
 
   public static Labyrint lesFraFil(File fil) throws FileNotFoundException {
-    // trenger jeg denne? Eller er det nok at bare metoden kaster dette unntaket??
-    if(!fil.exists()) {
-      throw new FileNotFoundException();
-    }
+    Scanner scanner = new Scanner(fil);
 
-    Scanner sc = new Scanner(fil);
-    String[] storrelse = sc.nextLine().split(" ");  // array med størrelsen til labyrinten (antall rader og kolonner)
+    String[] storrelse = scanner.nextLine().split(" ");  // array med størrelsen til labyrinten (antall rader og kolonner)
     antRader = Integer.parseInt(storrelse[0]);
     antKolonner = Integer.parseInt(storrelse[1]);
 
-    // Rute[][] labArray = new Rute[antRader][antKolonner];
-
     Labyrint labyrint = new Labyrint();
-    konstruerLabyrint(sc, labyrint);
+    int rad = 0;
+
+    while(scanner.hasNextLine()) {       // leser inn resten av filen (selve labyrinten)
+      char[] charArray = scanner.nextLine().toCharArray();
+      for(int kolonne = 0; kolonne < charArray.length; kolonne++) {
+        Rute rute = opprettRute(charArray[kolonne], rad, kolonne, labyrint);
+        labArray[rad][kolonne] = rute;
+      }
+      rad++;
+    }
     leggTilNaboer();
     return labyrint;
   }
 
-  public static void konstruerLabyrint(Scanner sc, Labyrint labyrint) {
-    int rad = 0;
-
-    while(sc.hasNextLine()) {       // leser inn resten av filen (selve labyrinten)
-      char[] charArray = sc.nextLine().toCharArray();
-      for(int kolonne = 0; kolonne < charArray.length; kolonne++) {
-        Rute rute = opprettRute(charArray[i], rad, kolonne);
-        labArray[rad][kolonne] = rute;
-      }
-
-
-      /*for(int i = 0; i < charArray.length; i++) {
-        if(charArray[i] == '.') {
-          if(linjenummer == 0 || linjenummer == (antRader-1) || i == 0 || i == (charArray.length-1)) {
-            labArray[linjenummer][i] = new Aapning(linjenummer, i, labyrint);
-          } else {
-            labArray[linjenummer][i] = new HvitRute(linjenummer, i, labyrint);
-          }
-        }
-        else if(charArray[i] == '#') {
-          labArray[linjenummer][i] = new SortRute(linjenummer, i, labyrint);
-        }
-      }
-      linjenummer++;
-    }*/
-  }
-
-  public static Rute opprettRute(char tegn, int rad, int kolonne) {
+  // er det mulig å referere til labyrinten på en annen måte?
+      // this: gikk ikke da dette er et statisk miljø...
+  public static Rute opprettRute(char tegn, int rad, int kolonne, Labyrint labyrint) {
     if(tegn == '.') {
       if(rad == 0 || rad == (antRader-1) || kolonne == 0 || kolonne == (antKolonner-1)) {
+        return new Aapning(rad, kolonne, labyrint);
+    } else {
+      return new HvitRute(rad, kolonne, labyrint);
     }
+  } else {
+    return new SortRute(rad, kolonne, labyrint);
   }
+}
 
   public static void leggTilNaboer() {
     for(int rad = 0; rad < antRader; rad++) {
@@ -90,7 +73,7 @@ public class Labyrint {
 
   @Override
   public String toString() {
-    String labyrintTegning = "";
+    String labyrintTegning = "\n";
     for(int x = 0; x < antRader; x++) {
       for(int y = 0; y < antKolonner; y++) {
         labyrintTegning += (labArray[x][y].tilTegn() + " ");
