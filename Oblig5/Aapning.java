@@ -7,6 +7,12 @@ public class Aapning extends HvitRute {
   }
 
   @Override
+  public void gaa(Rute forrigeRute, String vei, Liste<String> utveier) {
+    vei += "(" + (kolonne+1) + ", " + (rad+1) + ")";
+    utveier.settInn(vei);
+  }
+
+  @Override
   public String toString() {
     return tilTegn() + " [" + rad + "][" + kolonne + "]";
   }

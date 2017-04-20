@@ -7,6 +7,24 @@ public class HvitRute extends Rute {
   }
 
   @Override
+  public void gaa(Rute forrigeRute, String vei, Liste<String> utveier) {
+    vei += "(" + (kolonne+1) + ", " + (rad+1) + ") --> ";
+
+    if(forrigeRute != naboNord) {
+      naboNord.gaa(this, vei, utveier);
+    }
+    if(forrigeRute != naboOst) {
+      naboOst.gaa(this, vei, utveier);
+    }
+    if(forrigeRute != naboSyd) {
+      naboSyd.gaa(this, vei, utveier);
+    }
+    if(forrigeRute != naboVest) {
+      naboVest.gaa(this, vei, utveier);
+    }
+  }
+
+  @Override
   public char tilTegn() {
     return ' ';
   }

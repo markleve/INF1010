@@ -90,6 +90,7 @@ public class Labyrint {
       // --> mer objektorientert !!!
 
   public static String kortesteUtvei() {
+
     HashMap<String, Integer> utveiLengder = new HashMap<String, Integer>();
 
     for(String vei : utveier) {

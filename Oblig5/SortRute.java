@@ -6,6 +6,9 @@ public class SortRute extends Rute {
   }
 
   @Override
+  public void gaa(Rute forrigeRute, String vei, Liste<String> utveier) { }
+
+  @Override
   public char tilTegn() {
     return '#';
   }
