@@ -1,12 +1,21 @@
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.util.Collections;
+
+// Spørsmål
+//      - Dersom jeg skriver inn koordinatene til en av rutene som er en åpning
+//        gås det bare en vei (altså printes bare den gjeldende ruten ut), men
+//        jeg ønsker jo også at den skal gå til den andre ruten også (bruker filen 2.in)
 
 public class Labyrint {
 
   private static int antRader;
   private static int antKolonner;
   private static Rute[][] labArray;
+  private static Liste<String> utveier;
+  private static int antUtveier;
 
   // skal antrader og antkolonner inn i konstruktøren?
   // skal den bare lagre et rute arrat og ikke initialisere det her?
@@ -18,6 +27,7 @@ public class Labyrint {
   public int hentAntRader() { return antRader; }
   public int hentAntKolonner() { return antKolonner; }
   public Rute[][] hentlabArray() { return labArray; }
+  public int hentAntUtveier() { return antUtveier; }
 
   public static Labyrint lesFraFil(File fil) throws FileNotFoundException {
     Scanner scanner = new Scanner(fil);
@@ -27,7 +37,7 @@ public class Labyrint {
     antKolonner = Integer.parseInt(storrelse[1]);
 
     Labyrint labyrint = new Labyrint();
-    int rad = 0;
+    int rad = 0;      // raden programmet leser
 
     while(scanner.hasNextLine()) {       // leser inn resten av filen (selve labyrinten)
       char[] charArray = scanner.nextLine().toCharArray();
@@ -50,7 +60,7 @@ public class Labyrint {
     } else {
       return new HvitRute(rad, kolonne, labyrint);
     }
-  } else {
+  } else {    // antar her at det enten er . eller # i rutene (hvordan kan jeg skrive det for å fange opp eventuelle feil ??)
     return new SortRute(rad, kolonne, labyrint);
   }
 }
@@ -65,11 +75,34 @@ public class Labyrint {
 
   // signaturen burde vært int rad, int kolonne (det er slik resten av programmet brukes)
   public static Liste<String> finnUtveiFra(int kol, int rad) {
-    return labArray[rad-1][kol-1].finnUtvei();
+    utveier = labArray[rad-1][kol-1].finnUtvei();
+    antUtveier = utveier.storrelse();
+    return utveier;
   }
 
   // hva skal egentlig denne gjøre ???
   public void settMinimalUtskrift() { }
+
+  public static String kortesteUtvei() {
+    HashMap<String, Integer> utveiLengder = new HashMap<String, Integer>();
+
+    for(String vei : utveier) {
+      String[] numSkritt = vei.split("-->");
+      int lengde = 0;
+      for(String str : numSkritt) {
+        lengde++;
+      }
+      utveiLengder.put(vei, lengde);
+    }
+
+    int minLengde = Collections.min(utveiLengder.values());
+    for(String utvei : utveiLengder.keySet()) {
+      if(utveiLengder.get(utvei) == minLengde) {
+        return "Korteste utvei: " + utvei + "\n Lengde: " + minLengde + "\n";
+      }
+    }
+    return "Det finnes ingen utvei.";
+  }
 
   @Override
   public String toString() {

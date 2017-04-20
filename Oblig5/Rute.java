@@ -1,5 +1,4 @@
 
-
 abstract class Rute {
   protected int rad;
   protected int kolonne;
@@ -46,11 +45,11 @@ abstract class Rute {
     // basistilfellet
     if(this instanceof Aapning) {
       // det er forvirrende at kolonne skal først og rad etterpå !
-      vei += "Åpning (" + (rad+1) + ", " + (kolonne+1) + ")";
+      vei += "(" + (kolonne+1) + ", " + (rad+1) + ")";
       utveier.settInn(vei);
       return;         // må jeg returnere her, eller går den tilbake av seg selv?
     }
-    vei += "(" + (rad+1) + ", " + (kolonne+1) + ") --> ";
+    vei += "(" + (kolonne+1) + ", " + (rad+1) + ") --> ";
 
     if(forrigeRute != naboNord && (naboNord instanceof HvitRute)) {
       naboNord.gaa(this, vei, utveier);
