@@ -4,6 +4,10 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 
 class Main {
+
+  private static int startKol;
+  private static int startRad;
+
   public static void main(String[] args) {
     String filnavn = null;
     if(args.length > 0) {
@@ -42,7 +46,11 @@ class Main {
       String linje = inn.nextLine();
       if(linje.equals("ESC")) { break; }
       if(linje.equals("KORT")) {
-        System.out.println(labyrint.kortesteUtvei());
+        OrdnetLenkeliste<Utvei> utveier = labyrint.kortesteUtvei(startKol, startRad);
+        for(Utvei utvei: utveier) {
+          System.out.println(utvei);
+        }
+        //System.out.println(labyrint.kortesteUtvei());
         continue;
       }
       if(linje.equals("NUM")) {
@@ -50,8 +58,8 @@ class Main {
         continue;
       }
       String[] ord = linje.split(" ");
-      int startKol = Integer.parseInt(ord[0]);
-      int startRad = Integer.parseInt(ord[1]);
+      startKol = Integer.parseInt(ord[0]);
+      startRad = Integer.parseInt(ord[1]);
       if(labArray[startRad-1][startKol-1] instanceof SortRute) {
         System.out.println("Kan ikke starte på en sort rute.");
         continue;
@@ -59,11 +67,13 @@ class Main {
       System.out.println("Utveier fra posisjon (" + startKol + ", " + startRad + ")");
 
       Liste<String> utveier = labyrint.finnUtveiFra(startKol, startRad);
-
-      for(String vei: utveier) {
-        System.out.println(vei + "\n");
+      if(utveier.erTom()) {
+        System.out.println("Det er ingen utveier.");
+      } else {
+        for(String vei: utveier) {
+          System.out.println(vei + "\n");
+        }
       }
-
     }
   }
 }

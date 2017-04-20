@@ -44,10 +44,6 @@ abstract class Rute {
     Liste<String> utveier = new OrdnetLenkeliste<String>();
     String vei = "";
     gaa(this, vei, utveier);
-
-    if(utveier.erTom()) {
-      utveier.settInn("Det er ingen utveier.");
-    }
     return utveier;
   }
 

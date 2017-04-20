@@ -1,4 +1,3 @@
-// disse rutene kan man gaa paa
 
 public class HvitRute extends Rute {
 

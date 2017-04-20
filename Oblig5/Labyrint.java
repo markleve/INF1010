@@ -9,7 +9,7 @@ public class Labyrint {
   private static int antRader;
   private static int antKolonner;
   private static Rute[][] labArray;
-  private static Liste<String> utveier;
+  //private static Liste<String> utveier;
   private static int antUtveier;
 
   private Labyrint(int antRader, int antKolonner, Rute[][] labArray) {
@@ -51,6 +51,7 @@ public class Labyrint {
     return new Labyrint(antRader, antKolonner, labArray);
   }
 
+  // kan kaste ugyldig tegn exception
   public static Rute opprettRute(char tegn, int rad, int kolonne, int antRader, int antKolonner) {
     if(tegn == '.') {
       if(rad == 0 || rad == (antRader-1) || kolonne == 0 || kolonne == (antKolonner-1)) {
@@ -73,33 +74,20 @@ public class Labyrint {
     }
   }
 
+  // kan kaste tom liste exception
   public static Liste<String> finnUtveiFra(int kol, int rad) {
-    utveier = labArray[rad-1][kol-1].finnUtvei();
+    Liste<String> utveier = labArray[rad-1][kol-1].finnUtvei();
     antUtveier = utveier.storrelse();
     return utveier;
   }
 
   public void settMinimalUtskrift() { }
 
-
-  // kan lage Utvei klassen og putte splittingen og alt det der !!
-  // kan lage en lenkeliste med utveier hvor hver utvei er den splittede strengen
-      // kan bruke den som sorterer på størrelsen (OrdnetLenkeliste)
-      // kan deretter returnere det første elementet i denne listen
-
-      // --> mer objektorientert !!!
-
-  public static String kortesteUtvei() {
-
-    HashMap<String, Integer> utveiLengder = new HashMap<String, Integer>();
-
+  // kan kaste tom liste exception
+  public static OrdnetLenkeliste<Utvei> kortesteUtvei(int kol, int rad) {
+    /*HashMap<String, Integer> utveiLengder = new HashMap<String, Integer>();
     for(String vei : utveier) {
-      String[] numSkritt = vei.split("-->");
-      int lengde = 0;
-      for(String str : numSkritt) {
-        lengde++;
-      }
-      utveiLengder.put(vei, lengde);
+      utveiLengder.put(vei, vei.split("-->").length);
     }
 
     int minLengde = Collections.min(utveiLengder.values());
@@ -108,7 +96,20 @@ public class Labyrint {
         return "Korteste utvei: " + utvei + "\n Lengde: " + minLengde + "\n";
       }
     }
-    return "Det finnes ingen utvei.";
+    return "Det finnes ingen utvei.";*/
+
+    // kan lage Utvei klassen og putte splittingen og alt det der !!
+    // kan lage en lenkeliste med utveier hvor hver utvei er den splittede strengen
+        // kan bruke den som sorterer på størrelsen (OrdnetLenkeliste)
+        // kan deretter returnere det første elementet i denne listen
+
+    // Skal prøve å skrive denne om slik at jeg bruker en Utvei klasse:
+    Liste<String> utveier = labArray[rad-1][kol-1].finnUtvei();
+    OrdnetLenkeliste<Utvei> sorterteUtveier = new OrdnetLenkeliste<Utvei>();
+    for(String vei : utveier) {
+      sorterteUtveier.settInn(new Utvei(vei, vei.split("-->").length));
+    }
+    return sorterteUtveier;
   }
 
   @Override
