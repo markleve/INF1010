@@ -12,7 +12,7 @@ class OrdnetLenkeliste<T extends Comparable<T>> extends Lenkeliste<T> {
     Node forrige = hode;
 
     // nyNode.data.compareTo(gjeldende.data) gir positiv verdi dersom nyNode
-    // sin data er storre enn gjeldende sin data 
+    // sin data er storre enn gjeldende sin data
     while(gjeldende != hale && nyNode.data.compareTo(gjeldende.data) >= 0) {
       forrige = gjeldende;
       gjeldende = gjeldende.neste;
@@ -22,5 +22,13 @@ class OrdnetLenkeliste<T extends Comparable<T>> extends Lenkeliste<T> {
     nyNode.forrige = forrige;
     nyNode.neste = gjeldende;
     antElement++;
+  }
+
+  public T hentForsteElement() {
+    return hode.neste.data;
+  }
+
+  public T hentSisteElement() {
+    return hale.forrige.data;
   }
 }

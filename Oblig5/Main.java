@@ -46,11 +46,7 @@ class Main {
       String linje = inn.nextLine();
       if(linje.equals("ESC")) { break; }
       if(linje.equals("KORT")) {
-        OrdnetLenkeliste<Utvei> utveier = labyrint.kortesteUtvei(startKol, startRad);
-        for(Utvei utvei: utveier) {
-          System.out.println(utvei);
-        }
-        //System.out.println(labyrint.kortesteUtvei());
+        System.out.println(labyrint.kortesteUtvei(startKol, startRad));
         continue;
       }
       if(linje.equals("NUM")) {

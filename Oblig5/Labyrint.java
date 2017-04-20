@@ -84,32 +84,14 @@ public class Labyrint {
   public void settMinimalUtskrift() { }
 
   // kan kaste tom liste exception
-  public static OrdnetLenkeliste<Utvei> kortesteUtvei(int kol, int rad) {
-    /*HashMap<String, Integer> utveiLengder = new HashMap<String, Integer>();
-    for(String vei : utveier) {
-      utveiLengder.put(vei, vei.split("-->").length);
-    }
-
-    int minLengde = Collections.min(utveiLengder.values());
-    for(String utvei : utveiLengder.keySet()) {
-      if(utveiLengder.get(utvei) == minLengde) {
-        return "Korteste utvei: " + utvei + "\n Lengde: " + minLengde + "\n";
-      }
-    }
-    return "Det finnes ingen utvei.";*/
-
-    // kan lage Utvei klassen og putte splittingen og alt det der !!
-    // kan lage en lenkeliste med utveier hvor hver utvei er den splittede strengen
-        // kan bruke den som sorterer på størrelsen (OrdnetLenkeliste)
-        // kan deretter returnere det første elementet i denne listen
-
-    // Skal prøve å skrive denne om slik at jeg bruker en Utvei klasse:
+  public static String kortesteUtvei(int kol, int rad) {
     Liste<String> utveier = labArray[rad-1][kol-1].finnUtvei();
     OrdnetLenkeliste<Utvei> sorterteUtveier = new OrdnetLenkeliste<Utvei>();
     for(String vei : utveier) {
       sorterteUtveier.settInn(new Utvei(vei, vei.split("-->").length));
     }
-    return sorterteUtveier;
+    Utvei kortesteUtvei = sorterteUtveier.hentForsteElement();
+    return "Korteste utvei: " + kortesteUtvei.hentUtvei() + "\n Lengde: " + kortesteUtvei.hentLengde() + "\n";
   }
 
   @Override
