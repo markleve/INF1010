@@ -26,7 +26,7 @@ class Main {
 
     // skriver ut labyrinten og informasjon om denne
     Rute[][] labArray = labyrint.hentlabArray();
-    System.out.println("\nLabyrintoppsettet: \n" + labyrint);
+    System.out.println(labyrint);
     System.out.println("#: Sort rute");
     System.out.println(" : Hvit rute");
     System.out.println("A: Åpning");

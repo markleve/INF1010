@@ -2,13 +2,13 @@
 
 public class Aapning extends HvitRute {
 
-  public Aapning(int rad, int kolonne, Labyrint tilhorendeLabyrint) {
-    super(rad, kolonne, tilhorendeLabyrint);
+  public Aapning(int rad, int kolonne) {
+    super(rad, kolonne);
   }
 
   @Override
   public String toString() {
-    return "Åpning [" + rad + "][" + kolonne + "]";
+    return tilTegn() + " [" + rad + "][" + kolonne + "]";
   }
 
   @Override

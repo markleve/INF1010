@@ -1,9 +1,8 @@
-// disse rutene er som en vegg
 
 public class SortRute extends Rute {
 
-  public SortRute(int rad, int kolonne, Labyrint tilhorendeLabyrint) {
-    super(rad, kolonne, tilhorendeLabyrint);
+  public SortRute(int rad, int kolonne) {
+    super(rad, kolonne);
   }
 
   @Override

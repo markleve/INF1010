@@ -4,11 +4,6 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Collections;
 
-// Spørsmål
-//      - Dersom jeg skriver inn koordinatene til en av rutene som er en åpning
-//        gås det bare en vei (altså printes bare den gjeldende ruten ut), men
-//        jeg ønsker jo også at den skal gå til den andre ruten også (bruker filen 2.in)
-
 public class Labyrint {
 
   private static int antRader;
@@ -17,11 +12,17 @@ public class Labyrint {
   private static Liste<String> utveier;
   private static int antUtveier;
 
-  // skal antrader og antkolonner inn i konstruktøren?
-  // skal den bare lagre et rute arrat og ikke initialisere det her?
-  //    skal arrayet heller initialiseres når man leser fra fil?
-  private Labyrint() {
-    labArray = new Rute[antRader][antKolonner];
+  private Labyrint(int antRader, int antKolonner, Rute[][] labArray) {
+    this.antRader = antRader;
+    this.antKolonner = antKolonner;
+    this.labArray = labArray;
+
+    // legger denne labyrinten til alle rutene
+    for(int rad = 0; rad < antRader; rad++) {
+      for(int kol = 0; kol < antKolonner; kol++) {
+        labArray[rad][kol].settLabyrint(this);
+      }
+    }
   }
 
   public int hentAntRader() { return antRader; }
@@ -33,55 +34,60 @@ public class Labyrint {
     Scanner scanner = new Scanner(fil);
 
     String[] storrelse = scanner.nextLine().split(" ");  // array med størrelsen til labyrinten (antall rader og kolonner)
-    antRader = Integer.parseInt(storrelse[0]);
-    antKolonner = Integer.parseInt(storrelse[1]);
-
-    Labyrint labyrint = new Labyrint();
+    int antRader = Integer.parseInt(storrelse[0]);
+    int antKolonner = Integer.parseInt(storrelse[1]);
+    Rute[][] labArray = new Rute[antRader][antKolonner];
     int rad = 0;      // raden programmet leser
 
     while(scanner.hasNextLine()) {       // leser inn resten av filen (selve labyrinten)
       char[] charArray = scanner.nextLine().toCharArray();
       for(int kolonne = 0; kolonne < charArray.length; kolonne++) {
-        Rute rute = opprettRute(charArray[kolonne], rad, kolonne, labyrint);
+        Rute rute = opprettRute(charArray[kolonne], rad, kolonne, antRader, antKolonner);
         labArray[rad][kolonne] = rute;
       }
       rad++;
     }
-    leggTilNaboer();
-    return labyrint;
+    leggTilNaboer(labArray, antRader, antKolonner);
+    return new Labyrint(antRader, antKolonner, labArray);
   }
 
-  // er det mulig å referere til labyrinten på en annen måte?
-      // this: gikk ikke da dette er et statisk miljø...
-  public static Rute opprettRute(char tegn, int rad, int kolonne, Labyrint labyrint) {
+  public static Rute opprettRute(char tegn, int rad, int kolonne, int antRader, int antKolonner) {
     if(tegn == '.') {
       if(rad == 0 || rad == (antRader-1) || kolonne == 0 || kolonne == (antKolonner-1)) {
-        return new Aapning(rad, kolonne, labyrint);
+        return new Aapning(rad, kolonne);
+      } else {
+        return new HvitRute(rad, kolonne);
+      }
+    } else if (tegn == '#'){
+      return new SortRute(rad, kolonne);
     } else {
-      return new HvitRute(rad, kolonne, labyrint);
+      return null;
     }
-  } else {    // antar her at det enten er . eller # i rutene (hvordan kan jeg skrive det for å fange opp eventuelle feil ??)
-    return new SortRute(rad, kolonne, labyrint);
   }
-}
 
-  public static void leggTilNaboer() {
+  public static void leggTilNaboer(Rute[][] labArray, int antRader, int antKolonner) {
     for(int rad = 0; rad < antRader; rad++) {
       for(int kol = 0; kol < antKolonner; kol++) {
-        labArray[rad][kol].settAlleNaboer(labArray);
+        labArray[rad][kol].settAlleNaboer(labArray, antRader, antKolonner);
       }
     }
   }
 
-  // signaturen burde vært int rad, int kolonne (det er slik resten av programmet brukes)
   public static Liste<String> finnUtveiFra(int kol, int rad) {
     utveier = labArray[rad-1][kol-1].finnUtvei();
     antUtveier = utveier.storrelse();
     return utveier;
   }
 
-  // hva skal egentlig denne gjøre ???
   public void settMinimalUtskrift() { }
+
+
+  // kan lage Utvei klassen og putte splittingen og alt det der !!
+  // kan lage en lenkeliste med utveier hvor hver utvei er den splittede strengen
+      // kan bruke den som sorterer på størrelsen (OrdnetLenkeliste)
+      // kan deretter returnere det første elementet i denne listen
+
+      // --> mer objektorientert !!!
 
   public static String kortesteUtvei() {
     HashMap<String, Integer> utveiLengder = new HashMap<String, Integer>();

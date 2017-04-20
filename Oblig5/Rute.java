@@ -8,10 +8,9 @@ abstract class Rute {
   protected Rute naboOst = null;
   protected Rute naboVest = null;
 
-  public Rute(int rad, int kolonne, Labyrint tilhorendeLabyrint) {
+  public Rute(int rad, int kolonne) {
     this.rad = rad;
     this.kolonne = kolonne;
-    this.tilhorendeLabyrint = tilhorendeLabyrint;
   }
 
   public int hentRad() { return rad; }
@@ -22,14 +21,18 @@ abstract class Rute {
   public Rute hentNaboOst() { return naboOst; }
   public Rute hentNaboVest() { return naboVest; }
 
-  public void settAlleNaboer(Rute[][] labArray) {
+  public void settLabyrint(Labyrint labyrint) {
+    tilhorendeLabyrint = labyrint;
+  }
+
+  public void settAlleNaboer(Rute[][] labArray, int antRader, int antKolonner) {
     if(rad > 0) {
       naboNord = labArray[rad-1][kolonne];
     }
-    if(kolonne+1 < tilhorendeLabyrint.hentAntKolonner() ) {
+    if(kolonne+1 < antKolonner ) {
       naboOst = labArray[rad][kolonne+1];
     }
-    if(rad+1 < tilhorendeLabyrint.hentAntRader()) {
+    if(rad+1 < antRader) {
       naboSyd = labArray[rad+1][kolonne];
     }
     if(kolonne > 0) {
@@ -39,15 +42,16 @@ abstract class Rute {
 
   public void gaa(Rute forrigeRute, String vei, Liste<String> utveier) {
 
-    // gå tilbake til alle rutene og sette vei til en tom liste
-          // hvordan blir 'vei' til hver rute slettet/nullstilt?
+    // kan lage en egen gaa metode i hver av underklassens
+        // sort rute har en gaa metode som ikke gjør noe
+        // aapning har de to linjene signaturen
+        // hvit rute har sine 4 sjekker (trenger ikke da sjekke at det er en instans av hvit rute)
 
     // basistilfellet
     if(this instanceof Aapning) {
-      // det er forvirrende at kolonne skal først og rad etterpå !
       vei += "(" + (kolonne+1) + ", " + (rad+1) + ")";
       utveier.settInn(vei);
-      return;         // må jeg returnere her, eller går den tilbake av seg selv?
+      return;      // returnerer så den går tilbake
     }
     vei += "(" + (kolonne+1) + ", " + (rad+1) + ") --> ";
 
