@@ -9,7 +9,6 @@ public class Labyrint {
   private static int antRader;
   private static int antKolonner;
   private static Rute[][] labArray;
-  //private static Liste<String> utveier;
   private static int antUtveier;
 
   private Labyrint(int antRader, int antKolonner, Rute[][] labArray) {
