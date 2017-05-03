@@ -17,19 +17,21 @@ public class Kryptograf implements Runnable {
     // hentMelding returnerer null når alle kryptografistene er ferdige og
     // listen med meldinger er tom
     while(kryptoMonitor.hentMelding() != null) {
+      System.out.println("Kryptograf har startet");
       Melding melding = kryptoMonitor.hentMelding();
+      System.out.println("\nMelding fra kanal " + melding.hentKanalId() + " med id " + melding.hentMeldingId() + "\n");
       // dekrypterer meldingen
-      String dekryptertTekst = Kryptografi.dekrypter(melding.hentMelding());
-      melding.setDekryptertMelding(dekryptertTekst);
+    //  String dekryptertTekst = Kryptografi.dekrypter(melding.hentMelding());
+    //  melding.setDekryptertMelding(dekryptertTekst);
 
-      dekryptoMonitor.settInnMelding(melding);
+    //  dekryptoMonitor.settInnMelding(melding);
     }
-
+/*
     alleFerdigBarriere.countDown();
     try {
       alleFerdigBarriere.await();
     } catch (InterruptedException e){ }
 
-    dekryptoMonitor.alleKryptograferFerdige();
+    dekryptoMonitor.alleKryptograferFerdige();*/
   }
 }

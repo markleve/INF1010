@@ -13,12 +13,15 @@ public class Monitor {
   public void settInnMelding(Melding melding) {
     laas.lock();
     try {
-      if(meldingListe.erTom()) {      // er dette nødvendig???
+      meldingListe.settInn(melding);
+      erTom.signalAll();
+
+      /*if(meldingListe.erTom()) {      // er dette nødvendig???
         meldingListe.settInn(melding);
         erTom.signalAll();              // signaliserer bare alle dersom meldingsliste er tom
       } else {
         meldingListe.settInn(melding);
-      }
+      }*/
     } finally {
       laas.unlock();
     }
@@ -28,7 +31,7 @@ public class Monitor {
   public Melding hentMelding() {
     laas.lock();
     try {
-      if(alleKryptograferFerdig) { return null; }
+      //if(alleKryptograferFerdig) { return null; }
       while(meldingListe.erTom()) {
         if(alleTelegrafisterFerdig) { return null; }
         erTom.await();                    // så lenge listen er tom skal kryptografene vente med å hente meldinger
@@ -40,6 +43,8 @@ public class Monitor {
       laas.unlock();
     }
   }
+
+  public boolean hentAlleTelegrafisterFerdig() { return alleTelegrafisterFerdig; }
 
   public void alleTelegrafisterFerdige() { alleTelegrafisterFerdig = true; }
   public void alleKryptograferFerdige() { alleKryptograferFerdig = true; }

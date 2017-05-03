@@ -3,8 +3,8 @@ import java.util.concurrent.CountDownLatch;
 
 public class TestProgram {
   public static void main(String[] args) {
-    int antallTelegrafister = 3;
-    int antallKryptografer = 5;
+    int antallTelegrafister = 1;
+    int antallKryptografer = 1;
 
     Operasjonssentral ops = new Operasjonssentral(antallTelegrafister);
     Kanal[] kanaler = ops.hentKanalArray();
@@ -14,6 +14,15 @@ public class TestProgram {
     for(int i = 0; i < antallTelegrafister; i++) {
       Runnable telegrafist = new Telegrafist(kryptoMonitor, kanaler[i], alleTelegrafisterFerdig);
       Thread traad = new Thread(telegrafist);
+      traad.start();
+    }
+
+    Monitor deKryptoMonitor = new Monitor();
+
+    CountDownLatch alleKryptograferFerdig = new CountDownLatch(antallKryptografer);
+    for(int i = 0; i < antallKryptografer; i++) {
+      Runnable kryptograf = new Kryptograf(kryptoMonitor, deKryptoMonitor, alleKryptograferFerdig);
+      Thread traad = new Thread(kryptograf);
       traad.start();
     }
 
@@ -49,14 +58,7 @@ public class TestProgram {
 
 
 /*
-    Monitor deKryptoMonitor = new Monitor();
 
-    CountDownLatch alleKryptograferFerdig = new CountDownLatch(antallKryptografer);
-    for(int i = 0; i < antallKryptografer; i++) {
-      Runnable kryptograf = new Kryptograf(kryptoMonitor, deKryptoMonitor, alleKryptograferFerdig);
-      Thread traad = new Thread(kryptograf);
-      traad.start();
-    }
 
     Operasjonsleder operasjoneleder = new Operasjonsleder(deKryptoMonitor);
     Thread traad = new Thread(operasjoneleder);
