@@ -8,6 +8,7 @@ public class Aapning extends HvitRute {
   @Override
   public void gaa(Rute forrigeRute, String vei, Liste<String> utveier) {
     vei += "(" + (kolonne+1) + ", " + (rad+1) + ")";
+    paaVeien = true;
     utveier.settInn(vei);
   }
 

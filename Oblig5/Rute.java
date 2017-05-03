@@ -7,6 +7,16 @@ abstract class Rute {
   protected Rute naboSyd = null;
   protected Rute naboOst = null;
   protected Rute naboVest = null;
+  protected boolean paaVeien = false;
+
+  /*  Syklisk løsning:
+        - markere hver rute vi har besøkt som besøkt
+        - skal fortsette å gå helt til en åpning er nådd eller en allerede besøkt rute er nådd
+            -> nås en allerede besøkt rute, skal man gå bakover, helt til man har en naborute som ikke er besøkt
+
+
+
+  */
 
   public Rute(int rad, int kolonne) {
     this.rad = rad;
