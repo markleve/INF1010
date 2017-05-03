@@ -8,18 +8,21 @@ public class Operasjonsleder implements Runnable {
 
   @Override
   public void run() {
-    System.out.println("jeg er her");
-    while(!dekryptoMonitor.kryptograferFerdig()) {}
+    System.out.println("Operasjonsleder starter");
+  //  while(!dekryptoMonitor.kryptograferFerdig()) {}
 
+  // sjekkes det kontinuerlig om denne betingelsen er oppfylt
     if(dekryptoMonitor.kryptograferFerdig()) {
       System.out.println("jeg er her");
       while(!dekryptoMonitor.meldingListeTom()) {
         Melding melding = dekryptoMonitor.hentMelding();
-        System.out.println("Meldingen er: " + melding.hentMelding() + "\n");
+        System.out.println("Meldingen er: " + melding.hentMeldingen() + "\n");
         System.out.println("Dekryptert melding er: " + melding.hentDekryptertMelding() + "\n");
         System.out.println("Kanal er: " + melding.hentKanalId() + "\n");
         System.out.println("Melding id er: " + melding.hentMeldingId() + "\n");
       }
+
+      System.out.println("slutt");
 
     /*  Koe<Melding> meldingListe = dekryptoMonitor.hentMeldingListe();
       for(Melding melding: meldingListe) {

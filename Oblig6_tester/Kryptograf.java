@@ -16,13 +16,14 @@ public class Kryptograf implements Runnable {
   public void run() {
     System.out.println("Kryptograf har startet");
 
-    while(!kryptoMonitor.heltFerdige()) {
-      Melding melding = kryptoMonitor.hentMelding();
+    Melding melding = kryptoMonitor.hentMelding();
+    while(melding != null) {
     //  System.out.println("\nMelding fra kanal " + melding.hentKanalId() + " med id " + melding.hentMeldingId() + "\n" + melding.hentMelding());
-      String dekryptertTekst = Kryptografi.dekrypter(melding.hentMelding());
+      String dekryptertTekst = Kryptografi.dekrypter(melding.hentMeldingen());
       melding.setDekryptertMelding(dekryptertTekst);
   //    System.out.println("\nMelding fra kanal " + melding.hentKanalId() + " med id " + melding.hentMeldingId() + "\n" + melding.hentDekryptertMelding());
       dekryptoMonitor.settInnMelding(melding);
+      melding = kryptoMonitor.hentMelding();
     }
 
     alleFerdigBarriere.countDown();
@@ -33,10 +34,10 @@ public class Kryptograf implements Runnable {
     } catch (InterruptedException e){ }
 
     dekryptoMonitor.setKryptograferFerdige();
-    System.out.println("Kryptograf ferdig: " + dekryptoMonitor.kryptograferFerdig());
+    //System.out.println("Kryptograf ferdig: " + dekryptoMonitor.kryptograferFerdig());
 
-  /*  for(Melding melding: dekryptoMonitor.hentMeldingListe()) {
-      System.out.println("\nMelding fra kanal " + melding.hentKanalId() + " med id " + melding.hentMeldingId() + "\n" + melding.hentDekryptertMelding());
-    }*/
+    for(Melding m: dekryptoMonitor.hentMeldingListe()) {
+      System.out.println("\nMelding fra kanal " + m.hentKanalId() + " med id " + m.hentMeldingId() + "\n" + m.hentDekryptertMelding());
+    }
   }
 }

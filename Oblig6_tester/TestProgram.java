@@ -17,7 +17,7 @@ public class TestProgram {
       traad.start();
     }
 
-  /*  Monitor deKryptoMonitor = new Monitor();
+    Monitor deKryptoMonitor = new Monitor();
 
     CountDownLatch kryptograferFerdig = new CountDownLatch(antKryptografer);
     for(int i = 0; i < antKryptografer; i++) {
@@ -26,7 +26,7 @@ public class TestProgram {
       traad.start();
     }
 
-    Operasjonsleder operasjoneleder = new Operasjonsleder(deKryptoMonitor);
+  /*  Operasjonsleder operasjoneleder = new Operasjonsleder(deKryptoMonitor);
     Thread traad = new Thread(operasjoneleder);
     traad.start();*/
   }

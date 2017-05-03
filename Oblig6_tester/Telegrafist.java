@@ -17,11 +17,11 @@ public class Telegrafist implements Runnable {
     System.out.println("Telegrafist " + kanal.hentId() + " har startet");
 
     // hadde en feil her !!!!
-    String mld = kanal.lytt();
-    while(mld != null) {
-      Melding melding = new Melding(mld, kanal.hentId());
+    String tekst = kanal.lytt();
+    while(tekst != null) {
+      Melding melding = new Melding(tekst, kanal.hentId());
       kryptoMonitor.settInnMelding(melding);
-      mld = kanal.lytt();
+      tekst = kanal.lytt();
     }
 
     alleFerdigBarriere.countDown();
@@ -33,8 +33,8 @@ public class Telegrafist implements Runnable {
     kryptoMonitor.setTelegraferFerdige();
   //  System.out.println("Telegrafist " + kanal.hentId()+" ferdig: "+ kryptoMonitor.telegraferFerdig());
 
-  /*  for(Melding melding: kryptoMonitor.hentMeldingListe()) {
-      System.out.println("\nMelding fra kanal " + melding.hentKanalId() + " med id " + melding.hentMeldingId() + "\n" + melding.hentMelding());
+    /*for(Melding melding: kryptoMonitor.hentMeldingListe()) {
+      System.out.println("\nMelding fra kanal " + melding.hentKanalId() + " med id " + melding.hentMeldingId() + "\n" + melding.hentMeldingen());
     }*/
   }
 }

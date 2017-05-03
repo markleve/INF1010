@@ -9,7 +9,6 @@ public class Monitor {
   private Koe<Melding> meldingListe = new Koe<Melding>();
   private boolean telegraferFerdig = false;
   private boolean kryptograferFerdig = false;
-  private boolean heltFerdig = false;
 
   public void settInnMelding(Melding melding) {
     laas.lock();
@@ -29,12 +28,10 @@ public class Monitor {
     laas.lock();
     try {
       while(meldingListe.erTom()) {
-      //  if(telegraferFerdig) { heltFerdig = true; }
+        if(telegraferFerdig) { return null; }
         erTom.await();
       }
-      Melding melding = meldingListe.fjern();
-      if(meldingListe.erTom() && telegraferFerdig) { return null; } //heltFerdig = true;
-      return melding;        // kan man returnere i try metoden ????
+      return meldingListe.fjern();        // kan man returnere i try metoden ????
     } catch(InterruptedException e) {
       return null;      // denne måtte ha en return, hvorfor??
     } finally {
@@ -46,7 +43,6 @@ public class Monitor {
 
   public boolean telegraferFerdig() { return telegraferFerdig; }
   public boolean kryptograferFerdig() { return kryptograferFerdig; }
-  public boolean heltFerdige() { return heltFerdig; }
 
   public void setTelegraferFerdige() { telegraferFerdig = true; }
   public void setKryptograferFerdige() { kryptograferFerdig = true; }
