@@ -7,8 +7,7 @@ public class Monitor {
   private final Lock laas = new ReentrantLock();
   private final Condition erTom = laas.newCondition();
   private Koe<Melding> meldingListe = new Koe<Melding>();
-  private boolean telegraferFerdig = false;
-  private boolean kryptograferFerdig = false;
+  private boolean erFerdig = false;
 
   public void settInnMelding(Melding melding) {
     laas.lock();
@@ -28,7 +27,7 @@ public class Monitor {
     laas.lock();
     try {
       while(meldingListe.erTom()) {
-        if(telegraferFerdig) { return null; }
+        if(erFerdig) { return null; }
         erTom.await();
       }
       return meldingListe.fjern();        // kan man returnere i try metoden ????
@@ -40,12 +39,11 @@ public class Monitor {
   }
 
   public boolean meldingListeTom() { return meldingListe.erTom(); }
-
-  public boolean telegraferFerdig() { return telegraferFerdig; }
-  public boolean kryptograferFerdig() { return kryptograferFerdig; }
-
-  public void setTelegraferFerdige() { telegraferFerdig = true; }
-  public void setKryptograferFerdige() { kryptograferFerdig = true; }
+  public boolean erFerdig() { return erFerdig; }
   public Koe<Melding> hentMeldingListe() { return meldingListe; }
 
+  public void setErFerdig() {
+    //System.out.println("Satt til true");
+    erFerdig = true;
+  }
 }
