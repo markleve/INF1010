@@ -12,7 +12,7 @@ public class Melding {
     this.meldingId = teller++;
   }
 
-  public String hentMeldingen() { return melding; }
+  public String hentMelding() { return melding; }
   public String hentDekryptertMelding() { return dekryptertMelding; }
   public int hentKanalId() { return kanalId; }
   public int hentMeldingId() { return meldingId; }

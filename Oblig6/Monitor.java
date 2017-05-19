@@ -7,47 +7,61 @@ public class Monitor {
   private final Lock laas = new ReentrantLock();
   private final Condition erTom = laas.newCondition();
   private Koe<Melding> meldingListe = new Koe<Melding>();
-  private boolean alleTelegrafisterFerdig = false;
-  private boolean alleKryptograferFerdig = false;
+
+  private int antArbeidere;
+  private int antArbeidereFerdige = 0;
+
+  public Monitor(int antArbeidere) {
+    this.antArbeidere = antArbeidere;
+  }
 
   public void settInnMelding(Melding melding) {
     laas.lock();
     try {
-      meldingListe.settInn(melding);
-      erTom.signalAll();
-
-      /*if(meldingListe.erTom()) {      // er dette nødvendig???
+      if(meldingListe.erTom()) {
         meldingListe.settInn(melding);
-        erTom.signalAll();              // signaliserer bare alle dersom meldingsliste er tom
+        erTom.signalAll();
       } else {
         meldingListe.settInn(melding);
-      }*/
+      }
     } finally {
       laas.unlock();
     }
   }
 
-  // henter den første meldingen som ble satt inn
   public Melding hentMelding() {
     laas.lock();
     try {
-      //if(alleKryptograferFerdig) { return null; }
       while(meldingListe.erTom()) {
-        if(alleTelegrafisterFerdig) { return null; }
-        erTom.await();                    // så lenge listen er tom skal kryptografene vente med å hente meldinger
+        if(alleArbeidereFerdige()) { return null; }
+        erTom.await();
       }
-      return meldingListe.fjern();        // kan man returnere i try metoden ????
+      return meldingListe.fjern();
     } catch(InterruptedException e) {
-      return null;      // denne måtte ha en return, hvorfor??
+      return null;     
     } finally {
       laas.unlock();
     }
   }
 
-  public boolean hentAlleTelegrafisterFerdig() { return alleTelegrafisterFerdig; }
+  public boolean alleArbeidereFerdige() {
+    laas.lock();
+    try {
+      return (antArbeidereFerdige == antArbeidere);
+    } finally {
+      laas.unlock();
+    }
+  }
 
-  public void alleTelegrafisterFerdige() { alleTelegrafisterFerdig = true; }
-  public void alleKryptograferFerdige() { alleKryptograferFerdig = true; }
+  public void setErFerdig() {
+    laas.lock();
+    try {
+      antArbeidereFerdige += 1;
+    } finally {
+      laas.unlock();
+    }
+  }
+
   public Koe<Melding> hentMeldingListe() { return meldingListe; }
-
+  public int hentAntArbeidereFerdige() { return antArbeidereFerdige; }
 }
