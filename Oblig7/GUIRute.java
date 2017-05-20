@@ -33,8 +33,10 @@ public class GUIRute extends Pane {
             losninger = Labyrint.finnUtveiFra(rute.hentKolonne()+1, rute.hentRad()+1);
             if(rute instanceof HvitRute) {
               Oblig7.resetFarger();
+              setUtveiFarge();
               Oblig7.finnerLosninger(losninger);
             } else {
+              setUtveiFarge();
               Oblig7.resetFarger();
               Oblig7.setIngenUtveier();
               Oblig7.oppdaterAntUtveier();
