@@ -17,19 +17,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
-import javafx.scene.control.ComboBox;
-import javafx.collections.ObservableList;
-import javafx.collections.FXCollections;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import java.util.ArrayList;
 
 
 public class Oblig7 extends Application {
   private Stage vindu;
   private static BorderPane rot;
   private static VBox venstreBoks;
-  private static ComboBox<UtveiNy> velgLosning;
   private static VBox hoyreBoks;
   private static HBox bunnBoks;
   private static TextField displayAntLosning;
@@ -102,12 +95,7 @@ public class Oblig7 extends Application {
     displayAntLosning.setText("" + antUtveier);
 
     Label velgLosningLabel = new Label("Velg løsning: ");
-
-    velgLosning = new ComboBox<String>();
-    velgLosning.setPromptText("Valg");
-
-
-    venstreBoks.getChildren().addAll(resetLabyrintKnapp, antLosningLabel, displayAntLosning, velgLosningLabel, velgLosning);
+    venstreBoks.getChildren().addAll(resetLabyrintKnapp, antLosningLabel, displayAntLosning);
     return venstreBoks;
   }
 
@@ -149,70 +137,16 @@ public class Oblig7 extends Application {
       }
     }
     rutenett.setAlignment(Pos.CENTER);
-    //rutenett.setPadding(new Insets(10, 0, 0, 10));
 
     rot.setCenter(rutenett);
     rot.setLeft(venstreBoks);
     rot.setRight(hoyreBoks);
     rot.setBottom(bunnBoks);
-    //vindu.setWidth(90);
-    //vindu.setHeight(70);
     vindu.sizeToScene();
   }
 
-  public static void finnerKortesteLosning(String utvei) {
-    antUtveier += 1;
-    boolean[][] losninger = losningStringTilTabell(utvei, antKolonner, antRader);
-    for(int rad = 0; rad < antRader; rad++) {
-      for(int kol = 0; kol < antKolonner; kol++) {
-        if(losninger[rad][kol]) {
-          ruter[rad][kol].setUtveiFarge();
-        }
-      }
-    }
-    oppdaterAntUtveier();
-  }
-
   public static void finnerLosninger(Liste<String> utveier) {
-    velgLosning.getItems().clear();
     antUtveier = utveier.storrelse();
-
-    ObservableList<UtveiNy> valg = FXCollections.observableArrayList();
-  //  ArrayList<boolean[][]> booleanLosninger= new ArrayList<boolean[][]>();
-  /*  int teller = 1;
-    for(String utvei : utveier) {
-      valg.add("Løsning " + teller);
-      teller++;
-      booleanLosninger.add(losningStringTilTabell(utvei, antKolonner, antRader));
-    }*/
-
-    for(int i = 1; i <= antUtveier; i++) {
-      valg.add(new UtveiNy("Løsning nr. " + i));
-    }
-    velgLosning.setItems(valg);
-
-  /*  velgLosning.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-      @Override
-      public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-        // Your action here
-        resetFarger();
-        System.out.println("Selected item: " + newValue);
-      //  String utvei = utveier.fjern();
-      //  boolean[][] losninger = losningStringTilTabell(utvei, antKolonner, antRader);
-      boolean [][] losninger = booleanLosninger.get(0);
-        for(int rad = 0; rad < antRader; rad++) {
-          for(int kol = 0; kol < antKolonner; kol++) {
-            if(losninger[rad][kol]) {
-              ruter[rad][kol].setUtveiFarge();
-            }
-          }
-        }
-        oppdaterAntUtveier();
-      }
-    });*/
-
-
-
     Lenkeliste<String> alleUtveier = new Koe<String>();
     for(String str : utveier) {
       alleUtveier.settInn(str);
